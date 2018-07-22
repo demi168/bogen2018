@@ -11,7 +11,7 @@ var gulp    = require('gulp'),
 
 // gulp-sassの設定
 gulp.task('sass', function() {
-  gulp.src('./css/*.scss')
+  gulp.src('./scss/*.scss')
     .pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
     .pipe(maps.init())
     .pipe(glob({ignorePaths: ['*node_modules*']}))
@@ -41,7 +41,7 @@ gulp.task('reload', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./css/**/*.scss'], ['sass']);
+  gulp.watch(['./scss/**/*.scss'], ['sass']);
   gulp.watch(['./js/**/*.js','./*.php'], ['reload']);
 });
 

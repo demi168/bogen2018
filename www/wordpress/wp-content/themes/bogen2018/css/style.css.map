@@ -1,1 +1,0 @@
-{"version":3,"sources":["style.scss"],"names":[],"mappings":"AACA;EAEI,kBAAiB;EACjB,uBAAsB;CACvB;;AAMH;EACE,eAHiB;CAIlB","file":"style.css","sourcesContent":["// ネストのテスト\ndiv {\n  p {\n    font-weight: bold;\n    border: 4px solid #f00;\n  }\n}\n\n// 変数のテスト\n$fontColor: #525252;\n\nh1 {\n  color: $fontColor;\n}\n \n"]}
