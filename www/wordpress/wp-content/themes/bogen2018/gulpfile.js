@@ -11,7 +11,7 @@ var gulp    = require('gulp'),
 
 // gulp-sassの設定
 gulp.task('sass', function() {
-  gulp.src('./scss/*.scss')
+  gulp.src('./scss/**/*.scss')
     .pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
     .pipe(maps.init())
     .pipe(glob({ignorePaths: ['*node_modules*']}))
