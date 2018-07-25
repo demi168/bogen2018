@@ -1,43 +1,36 @@
 <?php get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-		<?php
-		if ( have_posts() ) :
+		<div class="content__container">
+			<!-- Article Lists -->
+			<div class="article__unit_list">
+		    <?php $posts = get_posts('numberposts=8'); ?>
+		    <?php foreach($posts as $post): ?>
+		      <article class="article__unit">
+						<div  class="article__unit_thumb">
+							<a href="<?php the_permalink(); ?>">
+								<?php if (has_post_thumbnail()) : ?>
+									<?php the_post_thumbnail('thumbnail'); ?>
+								<?php else : ?>
+									<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
+								<?php endif ; ?>
+							</a>
+						</div>
+						<header>
+							<h1 class="article__unit_title">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+							</h1>
+							<p class="article__unit_info">
+								<span><?php the_time('Y.m.d'); ?></span>
+								<span>|</span>
+								<span>カテゴリー</span>
+							</p>
+						</header>
+		      </article>
+		    <?php endforeach; ?>
+			</div>
+		</div><!-- /.content__container -->
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?>a</h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-	</div><!-- #primary -->
+	</main><!-- /#main -->
 
 <?php
-get_sidebar();
 get_footer();

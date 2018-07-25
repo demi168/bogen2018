@@ -8,7 +8,6 @@
  *
  * @package bogen2018
  */
-
 ?>
 
 	</div><!-- #content -->

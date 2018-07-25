@@ -159,3 +159,18 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/* 記事の最初の画像を取得しサムネイルにする */
+function catch_that_image() {
+	global $post, $posts;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	$first_img = $matches [1] [0];
+
+	if(empty($first_img)){
+	    // 記事内で画像がなかったときのためのデフォルト画像を指定
+	    $first_img = "/images/default.jpg";
+	}
+	return $first_img;
+}
