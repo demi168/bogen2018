@@ -12,6 +12,12 @@
 .article {
 	&__unit {
 		@include column-width($numberColumns: 4);
+		&_product {
+			@include column-width($numberColumns: 3);
+		}
+		&_column {
+			@include column-width($numberColumns: 2);
+		}
 		&_thumb {
 			width: 100%;
 			height: auto;

@@ -958,6 +958,14 @@ a:hover, a:active {
   width: 22.15%;
 }
 
+.article__unit_product {
+  width: 30.79667%;
+}
+
+.article__unit_column {
+  width: 48.1%;
+}
+
 .article__unit_thumb {
   width: 100%;
   height: auto;
