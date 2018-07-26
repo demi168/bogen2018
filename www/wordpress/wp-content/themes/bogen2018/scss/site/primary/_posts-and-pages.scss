@@ -12,10 +12,14 @@
 .article {
 	&__unit {
 		@include column-width($numberColumns: 4);
-		&_product {
+		@include if-phone {
+			@include column-width($numberColumns: 1);
+		}
+		margin-bottom: 2em;
+		&.product {
 			@include column-width($numberColumns: 3);
 		}
-		&_column {
+		&.column {
 			@include column-width($numberColumns: 2);
 		}
 		&_thumb {
@@ -38,6 +42,22 @@
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+		}
+		header {
+			padding-top: .5em;
+		}
+		&_title {
+			a {
+				color: $color__text-main;
+				text-decoration: none;
+			}
+		}
+		&_info {
+			@include font-size(0.8);
+			color: $color__link;
+			a {
+				text-decoration: none;
+			}
 		}
 	}
 }

@@ -15,7 +15,7 @@
 					?>
 			    <?php foreach($posts as $post) : setup_postdata($post); ?>
 			      <article class="article__unit">
-							<div  class="article__unit_thumb">
+							<div class="article__unit_thumb">
 								<a href="<?php the_permalink(); ?>">
 									<?php if (has_post_thumbnail()) : ?>
 										<?php the_post_thumbnail('thumbnail'); ?>
@@ -58,7 +58,7 @@
 						if( $posts ):
 					?>
 			    <?php foreach($posts as $post) : setup_postdata($post); ?>
-			      <article class="article__unit_product">
+			      <article class="article__unit product">
 							<div  class="article__unit_thumb">
 								<a href="<?php the_permalink(); ?>">
 									<?php if (has_post_thumbnail()) : ?>
@@ -102,7 +102,7 @@
 						if( $posts ):
 					?>
 			    <?php foreach($posts as $post) : setup_postdata($post); ?>
-			      <article class="article__unit_column">
+			      <article class="article__unit column">
 							<div  class="article__unit_thumb">
 								<a href="<?php the_permalink(); ?>">
 									<?php if (has_post_thumbnail()) : ?>

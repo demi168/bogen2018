@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Theme Name: bogen2018
 Version: 1.0.0
@@ -24,6 +25,28 @@ Version: 1.0.0
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
+/*
+
+ブラウザの幅によって表示を切り替えるときに使う mixin です。
+
+```scss
+@include if-phone {
+  // スマホから見たときだけ適用されるCSS
+}
+@include if-desktop {
+  // PC から見たときだけ適用されるCSS
+}
+```
+
+幅によって細かく指定したいときは、以下の mixin を利用できます。
+
+```scss
+@include if-window-width-under-320px {
+  // ブラウザの幅が 320px 以下のときだけ適用されるCSS
+}
+```
+
+*/
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -498,10 +521,11 @@ h1, h2, h3, h4, h5, h6 {
   clear: both;
   font-weight: normal;
   font-size: 100%;
+  margin: 0;
 }
 
 p {
-  margin-bottom: 1.5em;
+  margin: 0;
 }
 
 dfn, cite, em, i {
@@ -956,13 +980,20 @@ a:hover, a:active {
 
 .article__unit {
   width: 22.15%;
+  margin-bottom: 2em;
 }
 
-.article__unit_product {
+@media screen and (max-width: 768px) {
+  .article__unit {
+    width: 100%;
+  }
+}
+
+.article__unit.product {
   width: 30.79667%;
 }
 
-.article__unit_column {
+.article__unit.column {
   width: 48.1%;
 }
 
@@ -997,6 +1028,25 @@ a:hover, a:active {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+.article__unit header {
+  padding-top: .5em;
+}
+
+.article__unit_title a {
+  color: #000;
+  text-decoration: none;
+}
+
+.article__unit_info {
+  font-size: 12.8px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.article__unit_info a {
+  text-decoration: none;
 }
 
 .sticky {
