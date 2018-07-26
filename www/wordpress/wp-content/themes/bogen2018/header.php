@@ -6,7 +6,6 @@
  * @package bogen2018
  */
 ?>
-
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -14,23 +13,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.backstretch.min.js"></script>
 </head>
-
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<header class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-	</header><!-- #masthead -->
-
-	<main class="content__main">
+	<div id="page" class="site">
+		<main class="content__main">

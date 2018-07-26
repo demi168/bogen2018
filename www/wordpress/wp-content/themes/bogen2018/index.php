@@ -1,9 +1,15 @@
 <?php get_header(); ?>
+		<div class="content__container">
+			<section class="section">
+				<div id="index__main_image">
+				</div><!-- Index Main Image -->
+			</section>
+		</div>
 
 		<div class="content__container">
 			<!-- Article Lists -->
-			<section>
-				<h1>BLOG</h1>
+			<section class="section">
+				<h1 class="section__caption">BLOG</h1>
 				<div class="article__unit_list">
 					<?php
 						$arg = array(
@@ -46,8 +52,8 @@
 			</section>
 
 			<!-- Product Lists -->
-			<section>
-				<h1>PRODUCTS</h1>
+			<section class="section">
+				<h1 class="section__caption">PRODUCTS</h1>
 				<div class="article__unit_list">
 					<?php
 						$arg = array(
@@ -90,8 +96,8 @@
 			</section>
 
 			<!-- Column Lists -->
-			<section>
-				<h1>COLUMN</h1>
+			<section class="section">
+				<h1 class="section__caption">COLUMN</h1>
 				<div class="article__unit_list">
 					<?php
 						$arg = array(
