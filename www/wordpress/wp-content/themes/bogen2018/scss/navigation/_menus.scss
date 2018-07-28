@@ -1,3 +1,55 @@
+.nav {
+	&__main {
+		@include column-width($numberColumns: 4);
+		font-family: $font__caption;
+		@include font-size(1.36);
+		margin-bottom: .5em;
+		letter-spacing: .05em;
+		line-height: 2;
+		&_logo {
+			width: 48px;
+			margin-bottom: 1em;
+			img {
+				width: 100%;
+			}
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			font-weight: 700;
+			&.sub-menu {
+				@include font-size(1.08);
+				padding: .5em 0 .5em 1em;
+				font-weight: 400;
+			}
+			li {
+				list-style: none;
+				&.current-menu-item,
+				&.current_page_item {
+					a {
+						color: $color__text-main;
+					}
+				}
+			}
+			a {
+				text-decoration: none;
+				&:hover {
+					color: $color__text-main;
+				}
+			}
+		}
+		&_link {
+			padding-top: .75em;
+			span {
+				padding-right: .75em;
+				img {
+					width: 24px;
+				}
+			}
+		}
+	}
+}
+
 .main-navigation {
 	clear: both;
 	display: block;
@@ -61,12 +113,6 @@
 	a {
 		display: block;
 		text-decoration: none;
-	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
 	}
 }
 

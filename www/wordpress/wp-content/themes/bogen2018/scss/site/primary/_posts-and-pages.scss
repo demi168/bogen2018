@@ -11,15 +11,24 @@
 		section {
 			&.section {
 				margin-bottom: 4vh;
+				.section__caption {
+					font-family: $font__caption;
+					@include font-size(1.36);
+					font-weight: 700;
+					margin-bottom: .5em;
+					letter-spacing: .05em;
+				}
 			}
-			.section__caption {
-				font-family: $font__caption;
-				@include font-size(1.36);
-				font-weight: 700;
-				margin-bottom: .5em;
-				letter-spacing: .05em;
+			&.section__flex {
+				display: flex;
 			}
 		}
+	}
+	&__breadcrumbs {
+		text-align: right;
+		margin-bottom: 1em;
+		@include font-size(0.72);
+		letter-spacing: .05em;
 	}
 }
 
@@ -31,53 +40,79 @@
 	margin-bottom: 8vh;
 }
 
+
+
+/* ARTICLE UNITS */
 .article {
-	&__unit {
-		@include column-width($numberColumns: 4);
-		@include if-phone {
-			@include column-width($numberColumns: 1);
-		}
-		margin-bottom: 4vh;
-		&.product {
+	&__list {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		justify-content: space-between;
+		&_unit {
 			@include column-width($numberColumns: 3);
-		}
-		&.column {
-			@include column-width($numberColumns: 2);
-		}
-		&_thumb {
-			width: 100%;
-			height: auto;
-			padding-top: 62%;
-			position: relative;
-			img {
-				position: absolute;
-		    top: 0;
-		    left: 0;
-		    width: 100%;
-		    height: 100%;
-				background: $color__background-screen;
-				object-fit: cover;
+			@include if-phone {
+				@include column-width($numberColumns: 1);
+			}
+			margin-bottom: 4vh;
+			&_thumb {
+				width: 100%;
+				height: auto;
+				padding-top: 62%;
+				position: relative;
+				img {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: $color__background-screen;
+					object-fit: cover;
+				}
+			}
+			&.blog {
+				@include column-width($numberColumns: 4);
+			}
+			&.product {
+				@include column-width($numberColumns: 3);
+			}
+			&.column {
+				@include column-width($numberColumns: 2);
+			}
+			header {
+				padding-top: .75em;
+				@include font-size(0.88);
+			}
+			&_title {
+				margin-bottom: .15em;
+				a {
+					color: $color__text-main;
+					text-decoration: none;
+				}
+			}
+			&_info {
+				color: $color__link;
+				a {
+					text-decoration: none;
+				}
 			}
 		}
-		&_list {
-			width: 100%;
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-		}
-		header {
-			padding-top: .75em;
-			@include font-size(0.88);
-		}
-		&_title {
-			margin-bottom: .15em;
-			a {
-				color: $color__text-main;
-				text-decoration: none;
+		&_pagenation {
+			margin: 3em auto 5em auto;
+			text-align: center;
+			.page-numbers {
+				&:after {
+					content: '/';
+					color: $color__link;
+					margin: 0 0 0 .35em;
+				}
+				&:last-child {
+					&:after {
+						content: '';
+					}
+				}
 			}
-		}
-		&_info {
-			color: $color__link;
 			a {
 				text-decoration: none;
 			}

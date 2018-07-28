@@ -1,53 +1,43 @@
-<?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package bogen2018
- */
+<?php get_header(); ?>
+	<div class="content__container">
+		<div class="content__breadcrumbs">
+    <?php if(function_exists('bcn_display')){ bcn_display(); }?>
+		</div>
 
-get_header();
-?>
+		<!-- Article Lists -->
+		<section class="section section__flex">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+			<!-- Side Navigation -->
+			<?php get_template_part( 'template-parts/main-nav' ); ?>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
+			<?php if ( have_posts() ) : ?>
+				<div class="article__list">
+					<?php
+					/* Start the Loop */
+					while ( have_posts() ) :
+						the_post();
+						get_template_part( 'template-parts/content', 'unit', get_post_type() );
+					endwhile;
+					else :
+						get_template_part( 'template-parts/content', 'none' );
+					endif;
+					?>
+				</div>
+		</section>
+		<div class="article__list_pagenation">
 			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+				$big = 9999999999;
+				$arg = array(
+					'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+					'current' => max( 1, get_query_var('paged') ),
+					'total' => $wp_query->max_num_pages,
+					'prev_text' => "PREV",
+					'next_text' => "NEXT"
+				);
+				echo paginate_links($arg);
+			?>
+		</div>
+	</div><!-- /.content__container -->
+</main><!-- /#main -->
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>

@@ -174,3 +174,16 @@ function catch_that_image() {
 	}
 	return $first_img;
 }
+
+
+/*
+ * the_archive_title 余計な文字を削除
+ */
+add_filter( 'get_the_archive_title', function ($title) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+	}
+    return $title;
+});

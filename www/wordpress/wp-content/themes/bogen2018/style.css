@@ -68,7 +68,7 @@ html {
   /* 3 */
   -webkit-text-size-adjust: 100%;
   /* 3 */
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
 /* Sections
@@ -794,7 +794,7 @@ textarea {
   margin: 0 0 0 25%;
 }
 
-.site-content .widget-area {
+.widget-area {
   float: left;
   overflow: hidden;
   width: 25%;
@@ -854,6 +854,66 @@ a.link__black {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.nav__main {
+  width: 22.15%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 21.76px;
+  font-size: 1.36rem;
+  margin-bottom: .5em;
+  letter-spacing: .05em;
+  line-height: 2;
+}
+
+.nav__main_logo {
+  width: 48px;
+  margin-bottom: 1em;
+}
+
+.nav__main_logo img {
+  width: 100%;
+}
+
+.nav__main ul {
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+}
+
+.nav__main ul.sub-menu {
+  font-size: 17.28px;
+  font-size: 1.08rem;
+  padding: .5em 0 .5em 1em;
+  font-weight: 400;
+}
+
+.nav__main ul li {
+  list-style: none;
+}
+
+.nav__main ul li.current-menu-item a, .nav__main ul li.current_page_item a {
+  color: #000;
+}
+
+.nav__main ul a {
+  text-decoration: none;
+}
+
+.nav__main ul a:hover {
+  color: #000;
+}
+
+.nav__main_link {
+  padding-top: .75em;
+}
+
+.nav__main_link span {
+  padding-right: .75em;
+}
+
+.nav__main_link span img {
+  width: 24px;
+}
+
 .main-navigation {
   clear: both;
   display: block;
@@ -1078,12 +1138,27 @@ a.link__black {
   margin-bottom: 4vh;
 }
 
-.content__container section .section__caption {
+.content__container section.section .section__caption {
   font-family: "Montserrat", sans-serif;
   font-size: 21.76px;
   font-size: 1.36rem;
   font-weight: 700;
   margin-bottom: .5em;
+  letter-spacing: .05em;
+}
+
+.content__container section.section__flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content__breadcrumbs {
+  text-align: right;
+  margin-bottom: 1em;
+  font-size: 11.52px;
+  font-size: 0.72rem;
   letter-spacing: .05em;
 }
 
@@ -1095,33 +1170,45 @@ a.link__black {
   margin-bottom: 8vh;
 }
 
-.article__unit {
-  width: 22.15%;
+/* ARTICLE UNITS */
+.article__list {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.article__list_unit {
+  width: 30.79667%;
   margin-bottom: 4vh;
 }
 
 @media screen and (max-width: 768px) {
-  .article__unit {
+  .article__list_unit {
     width: 100%;
   }
 }
 
-.article__unit.product {
-  width: 30.79667%;
-}
-
-.article__unit.column {
-  width: 48.1%;
-}
-
-.article__unit_thumb {
+.article__list_unit_thumb {
   width: 100%;
   height: auto;
   padding-top: 62%;
   position: relative;
 }
 
-.article__unit_thumb img {
+.article__list_unit_thumb img {
   position: absolute;
   top: 0;
   left: 0;
@@ -1132,41 +1219,57 @@ a.link__black {
   object-fit: cover;
 }
 
-.article__unit_list {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+.article__list_unit.blog {
+  width: 22.15%;
 }
 
-.article__unit header {
+.article__list_unit.product {
+  width: 30.79667%;
+}
+
+.article__list_unit.column {
+  width: 48.1%;
+}
+
+.article__list_unit header {
   padding-top: .75em;
   font-size: 14.08px;
   font-size: 0.88rem;
 }
 
-.article__unit_title {
+.article__list_unit_title {
   margin-bottom: .15em;
 }
 
-.article__unit_title a {
+.article__list_unit_title a {
   color: #000;
   text-decoration: none;
 }
 
-.article__unit_info {
+.article__list_unit_info {
   color: #888;
 }
 
-.article__unit_info a {
+.article__list_unit_info a {
+  text-decoration: none;
+}
+
+.article__list_pagenation {
+  margin: 3em auto 5em auto;
+  text-align: center;
+}
+
+.article__list_pagenation .page-numbers:after {
+  content: '/';
+  color: #888;
+  margin: 0 0 0 .35em;
+}
+
+.article__list_pagenation .page-numbers:last-child:after {
+  content: '';
+}
+
+.article__list_pagenation a {
   text-decoration: none;
 }
 

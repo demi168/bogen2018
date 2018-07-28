@@ -6,7 +6,6 @@
  *
  * @package bogen2018
  */
-
 get_header();
 ?>
 
@@ -35,14 +34,4 @@ get_header();
 <?php
 get_sidebar();
 get_footer();
-
-global $this_category;
-
-$cats = get_the_category();
-// 最初のカテゴリーを取り出す
-$this_category = $cats[0];
-
-// 親カテゴリーを取得
-if ($this_category->parent){
-    $this_category = get_category($this_category->parent);
-}
+?>

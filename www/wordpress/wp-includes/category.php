@@ -358,13 +358,3 @@ function _make_cat_compat( &$category ) {
 		$category['category_parent'] = &$category['parent'];
 	}
 }
-
-
-global $this_category;
-// IDからカテゴリー情報を取得
-$this_category = get_category($cat);
-
-// 親カテゴリーがある場合取得
-if ($this_category->parent) {
-    $this_category = get_category($this_category->parent);
-}
