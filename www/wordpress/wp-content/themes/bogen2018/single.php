@@ -1,37 +1,70 @@
-<?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package bogen2018
- */
-get_header();
-?>
+<?php get_header(); ?>
+	<div class="content__container">
+		<div class="content__breadcrumbs">
+    	<?php if(function_exists('bcn_display')){ bcn_display(); }?>
+		</div>
+		<!-- Article Single -->
+		<section class="section section__flex">
+			<!-- Side Navigation -->
+			<?php get_template_part( 'template-parts/main-nav' ); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+			<div class="article__single content__contents">
+				<?php
+				while ( have_posts() ) :
+					the_post();
+					get_template_part( 'template-parts/content', get_post_type() );
+				endwhile; // End of the loop.
+				?>
+			</div><!-- /.article__single -->
+		</section>
+	</div><!-- /.content__container -->
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
 
-			get_template_part( 'template-parts/content', get_post_type() );
+	<div class="content__container">
+		<div class="article__list">
+			<?php
+				$post_id = get_the_ID();
+				foreach((get_the_category()) as $cat) {
+					$cat_id = $cat->cat_ID ;
+					break ;
+				}
+				query_posts(
+					array(
+						'cat' => $cat_id,
+						'showposts' => 8,
+						'post__not_in' => array($post_id)
+					)
+				);
+				if(have_posts()) :
+			?>
+			<?php while (have_posts()) : the_post(); ?>
+			<article class="article__list_unit blog">
+				<div class="article__list_unit_thumb">
+					<a href="<?php the_permalink(); ?>">
+						<?php if (has_post_thumbnail()) : ?>
+							<?php the_post_thumbnail('thumbnail'); ?>
+						<?php else : ?>
+							<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
+						<?php endif ; ?>
+					</a>
+				</div>
+				<header>
+					<h1 class="article__list_unit_title">
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					</h1>
+					<p class="article__list_unit_info">
+						<span><?php the_time('Y.m.d'); ?></span>
+						<span>|</span>
+						<span>
+							<?php echo get_the_category_list( ' ,' ); ?>
+						</span>
+					</p>
+				</header>
+			</article>
+			<?php endwhile; ?>
+			<?php endif; ?>
+			<?php wp_reset_query(); ?>
+		</div>
+	</div><!-- /.content__container -->
 
-			the_post_navigation();
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
-?>
+<?php get_footer(); ?>

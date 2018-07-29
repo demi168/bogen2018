@@ -7,7 +7,6 @@
  * @package bogen2018
  */
 
-
 <?php
 	global $this_category;
 	$categories = get_categories(array(

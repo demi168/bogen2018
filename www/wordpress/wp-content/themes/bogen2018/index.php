@@ -3,8 +3,10 @@
 
 		<div class="content__container">
 			<section class="section">
-				<div id="index__main_image">
-				</div><!-- Index Main Image -->
+				<div class="index__page_header">
+					<div id="index__main_image"></div>
+					<?php get_template_part( 'template-parts/main-nav-index' ); ?>
+				</div>
 			</section>
 		</div>
 

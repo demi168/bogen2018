@@ -6,12 +6,11 @@
 
 		<!-- Article Lists -->
 		<section class="section section__flex">
-
 			<!-- Side Navigation -->
 			<?php get_template_part( 'template-parts/main-nav' ); ?>
 
 			<?php if ( have_posts() ) : ?>
-				<div class="article__list">
+				<div class="article__list content__contents">
 					<?php
 					/* Start the Loop */
 					while ( have_posts() ) :

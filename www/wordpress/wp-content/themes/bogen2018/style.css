@@ -516,7 +516,7 @@ textarea {
   font-family: YuGothic, Helvetica, sans-serif;
   font-size: 16px;
   font-size: 1rem;
-  line-height: 1.62;
+  line-height: 1.8;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -859,7 +859,7 @@ a.link__black {
   font-family: "Montserrat", sans-serif;
   font-size: 21.76px;
   font-size: 1.36rem;
-  margin-bottom: .5em;
+  margin: 0 0 .5em 0;
   letter-spacing: .05em;
   line-height: 2;
 }
@@ -873,25 +873,34 @@ a.link__black {
   width: 100%;
 }
 
+.index__page_header .nav__main a {
+  color: #fff;
+}
+
 .nav__main ul {
   margin: 0;
   padding: 0;
   font-weight: 700;
 }
 
-.nav__main ul.sub-menu {
-  font-size: 17.28px;
-  font-size: 1.08rem;
-  padding: .5em 0 .5em 1em;
-  font-weight: 400;
-}
-
 .nav__main ul li {
   list-style: none;
 }
 
+.nav__main ul li .sub-menu {
+  display: none;
+}
+
 .nav__main ul li.current-menu-item a, .nav__main ul li.current_page_item a {
   color: #000;
+}
+
+.nav__main ul li.menu-item-has-children.current-menu-item .sub-menu, .nav__main ul li.current-menu-ancestor .sub-menu {
+  display: block;
+  font-size: 17.28px;
+  font-size: 1.08rem;
+  padding: .5em 0 .5em 1em;
+  font-weight: 400;
 }
 
 .nav__main ul a {
@@ -1162,12 +1171,25 @@ a.link__black {
   letter-spacing: .05em;
 }
 
-#index__main_image {
+/* TOP PAGE */
+.index__page_header {
+  position: relative;
+  margin-bottom: 8vh;
+}
+
+.index__page_header #index__main_image {
+  top: 0;
   height: auto;
   width: 100%;
   padding-top: 62%;
   position: relative;
-  margin-bottom: 8vh;
+}
+
+.index__page_header .nav__main {
+  position: absolute;
+  top: 5vh;
+  left: 3vw;
+  z-index: 1;
 }
 
 /* ARTICLE UNITS */
@@ -1208,6 +1230,10 @@ a.link__black {
   position: relative;
 }
 
+.article__list_unit_thumb:hover {
+  opacity: .88;
+}
+
 .article__list_unit_thumb img {
   position: absolute;
   top: 0;
@@ -1246,6 +1272,10 @@ a.link__black {
   text-decoration: none;
 }
 
+.article__list_unit_title a:hover {
+  color: #888;
+}
+
 .article__list_unit_info {
   color: #888;
 }
@@ -1271,6 +1301,33 @@ a.link__black {
 
 .article__list_pagenation a {
   text-decoration: none;
+}
+
+/* ARTICLE POST */
+.post__header {
+  margin-bottom: 2em;
+}
+
+.post__header_title {
+  font-size: 25.92px;
+  font-size: 1.62rem;
+  margin-bottom: 1em;
+}
+
+.post__header_meta {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14.08px;
+  font-size: 0.88rem;
+  color: #888;
+  margin-bottom: 1em;
+}
+
+.post__content {
+  line-height: 1.8;
+}
+
+.post__content p {
+  margin-bottom: 1em;
 }
 
 .sticky {

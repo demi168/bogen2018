@@ -159,6 +159,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+
 /* 記事の最初の画像を取得しサムネイルにする */
 function catch_that_image() {
 	global $post, $posts;
@@ -170,7 +172,7 @@ function catch_that_image() {
 
 	if(empty($first_img)){
 	    // 記事内で画像がなかったときのためのデフォルト画像を指定
-	    $first_img = "/images/default.jpg";
+	    $first_img = "/wordpress/wp-content/themes/bogen2018/images/default.jpg";
 	}
 	return $first_img;
 }
