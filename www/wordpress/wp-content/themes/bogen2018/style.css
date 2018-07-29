@@ -855,6 +855,10 @@ a.link__black {
 ## Menus
 --------------------------------------------------------------*/
 .nav__main {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   width: 22.15%;
   font-family: "Montserrat", sans-serif;
   font-size: 21.76px;
@@ -1131,12 +1135,22 @@ a.link__black {
 ## Posts and pages
 --------------------------------------------------------------*/
 #page {
-  padding: 3vh 0 4vh 0;
+  padding: 8vh 0;
 }
 
 .content__main {
   max-width: 1280px;
   margin: 0 auto;
+}
+
+.content__contents {
+  width: 74.05%;
+}
+
+@media screen and (max-width: 768px) {
+  .content__contents {
+    width: 100%;
+  }
 }
 
 .content__container {
@@ -1214,7 +1228,7 @@ a.link__black {
 
 .article__list_unit {
   width: 30.79667%;
-  margin-bottom: 4vh;
+  margin-bottom: 6vh;
 }
 
 @media screen and (max-width: 768px) {
@@ -1249,12 +1263,30 @@ a.link__black {
   width: 22.15%;
 }
 
+@media screen and (max-width: 768px) {
+  .article__list_unit.blog {
+    width: 48.1%;
+  }
+}
+
 .article__list_unit.product {
   width: 30.79667%;
 }
 
+@media screen and (max-width: 768px) {
+  .article__list_unit.product {
+    width: 100%;
+  }
+}
+
 .article__list_unit.column {
   width: 48.1%;
+}
+
+@media screen and (max-width: 768px) {
+  .article__list_unit.column {
+    width: 100%;
+  }
 }
 
 .article__list_unit header {

@@ -1,5 +1,6 @@
 .nav {
 	&__main {
+		flex: 1;
 		@include column-width($numberColumns: 4);
 		font-family: $font__caption;
 		@include font-size(1.36);
