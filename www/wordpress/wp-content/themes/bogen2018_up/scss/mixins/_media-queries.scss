@@ -1,0 +1,42 @@
+/*
+
+ブラウザの幅によって表示を切り替えるときに使う mixin です。
+
+```scss
+@include if-phone {
+  // スマホから見たときだけ適用されるCSS
+}
+@include if-desktop {
+  // PC から見たときだけ適用されるCSS
+}
+```
+
+幅によって細かく指定したいときは、以下の mixin を利用できます。
+
+```scss
+@include if-window-width-under-320px {
+  // ブラウザの幅が 320px 以下のときだけ適用されるCSS
+}
+```
+
+*/
+@mixin if-phone {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin if-desktop {
+  @media screen and (min-width: 769px) {
+    @content;
+  }
+}
+@mixin if-window-width-under-320px {
+  @media screen and (max-width: 320px) {
+    @content;
+  }
+}
+@mixin if-retina {
+  @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
