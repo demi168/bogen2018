@@ -74,7 +74,7 @@
 			@include if-phone {
 				@include column-width($numberColumns: 1);
 			}
-			margin-bottom: 6vh;
+			margin-bottom: 4vh;
 			&_thumb {
 				width: 100%;
 				height: auto;
