@@ -8,7 +8,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php bogen2018_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="post__content">
 		<?php
 		the_content();
 		wp_link_pages( array(
@@ -16,5 +16,5 @@
 			'after'  => '</div>',
 		) );
 		?>
-	</div><!-- .entry-content -->
+	</div><!-- .post__content -->
 </article><!-- #post-<?php the_ID(); ?> -->

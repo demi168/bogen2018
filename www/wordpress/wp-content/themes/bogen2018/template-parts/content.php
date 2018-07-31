@@ -42,5 +42,5 @@
 			'after'  => '</div>',
 		) );
 		?>
-	</div><!-- .entry-content -->
+	</div><!-- .post__content -->
 </article><!-- #post-<?php the_ID(); ?> -->
