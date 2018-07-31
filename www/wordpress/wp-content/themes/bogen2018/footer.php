@@ -18,5 +18,6 @@
 		$("#index__main_image").backstretch("<?php echo get_template_directory_uri(); ?>/images/index/01.jpg");
 	});
 </script>
+
 </body>
 </html>

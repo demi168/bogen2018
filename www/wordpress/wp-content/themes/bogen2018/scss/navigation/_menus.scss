@@ -2,25 +2,37 @@
 	&__main {
 		flex: 1;
 		@include column-width($numberColumns: 4);
-		font-family: $font__caption;
-		@include font-size(1.36);
-		margin: 0 0 .5em 0;
-		letter-spacing: .05em;
-		line-height: 2;
+		@include if-phone {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background: #fff;
+			padding: 1em 0;
+		}
 		&_logo {
 			width: 48px;
-			margin-bottom: 1em;
+			margin-bottom: 2em;
+			line-height: 0;
+			@include if-phone {
+				width: 32px;
+				margin-bottom: 0;
+			}
 			img {
 				width: 100%;
 			}
-		}
-		.index__page_header & {
 			a {
-				color: $color__background-body;
+				&:hover {
+					opacity: .6;
+				}
 			}
 		}
 		ul {
-			margin: 0;
+			font-family: $font__caption;
+			@include font-size(1.36);
+			margin: 0 0 .5em 0;
+			letter-spacing: .05em;
+			line-height: 2;
 			padding: 0;
 			font-weight: 700;
 			li {
@@ -31,7 +43,7 @@
 				&.current-menu-item,
 				&.current_page_item {
 					a {
-						color: $color__text-main;
+						color: #000;
 					}
 				}
 				&.menu-item-has-children.current-menu-item,
@@ -53,6 +65,11 @@
 		}
 		&_link {
 			padding-top: .75em;
+			a {
+				&:hover {
+					opacity: .6;
+				}
+			}
 			span {
 				padding-right: .75em;
 				img {
@@ -64,106 +81,118 @@
 }
 
 
-
-
-.main-navigation {
-	clear: both;
-	display: block;
-	float: left;
-	width: 100%;
-
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 99999;
-
-			ul {
-				left: -999em;
-				top: 0;
-			}
-
-			li {
-				&:hover > ul,
-				&.focus > ul {
-					left: 100%;
-				}
-			}
-
-			a {
-				width: 200px;
-			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
-			}
-		}
-
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
-
-	li {
-		float: left;
-		position: relative;
-
-		&:hover > a,
-		&.focus > a {
-		}
-	}
-
+.nav {
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+.nav__wrap {
 	a {
-		display: block;
+		color: #000;
 		text-decoration: none;
 	}
-}
-
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
+	&_logo {
 		display: none;
 	}
-	.main-navigation ul {
-		display: block;
+	&.open {
+	  display: block;
+	}
+	&.close {
+		display: none;
+	}
+	@include if-desktop {
+		display: block !important;
 	}
 }
+.nav__button {
+  display: none;
+}
 
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
+@include if-phone {
+  .nav__button {
+    display: block;
+    cursor: pointer;
+  }
+  .nav__wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+		padding: 1.62em;
+		&_logo {
+			display: block;
+			width: 48px;
+			margin-bottom: 0;
+		}
+    .nav {
+      height: 100%;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+		ul {
+			padding: 1em 0 0 0;
+		}
+    li {
+      display: block;
+    }
+  }
+  /*メニューボタンのエフェクト*/
+  .nav__button,
+  .nav__button span {
+    display: inline-block;
+    transition: all 0.4s;
+    box-sizing: border-box;
+  }
+  .nav__button {
+    z-index: 20;
+    position: relative;
+    width: 28px;
+    height: 22px;
+  }
+  .nav__button span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+  }
+  .nav__button span:nth-of-type(1) {
+    top: 0;
+  }
+  .nav__button span:nth-of-type(2) {
+    top: 10px;
+  }
+  .nav__button span:nth-of-type(3) {
+    bottom: 0;
+  }
+  .nav__button.active span:nth-of-type(1) {
+    -webkit-transform: translateY(10px) rotate(-45deg);
+    transform: translateY(10px) rotate(-45deg);
+  }
+  .nav__button.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  .nav__button.active span:nth-of-type(3) {
+    -webkit-transform: translateY(-10px) rotate(45deg);
+    transform: translateY(-10px) rotate(45deg);
+  }
+}
 
-	.site-main & {
-		margin: 0 0 1.5em;
-		overflow: hidden;
+/* TOPページ */
+.index__page_header {
+	.nav__main {
+		position: absolute;
+		top: 5vh;
+		left: 3vw;
+		z-index: 1;
 	}
-
-	.nav-previous {
-		float: left;
-		width: 50%;
-	}
-
-	.nav-next {
-		float: right;
-		text-align: right;
-		width: 50%;
+	a {
+		color: #fff;
 	}
 }

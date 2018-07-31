@@ -3,9 +3,16 @@
 
 		<div class="content__container">
 			<section class="section">
+				<?php if(wp_is_mobile()): ?>
+					<?php get_template_part( 'template-parts/main-nav' ); ?>
+				<?php else: ?>
+				<?php endif; ?>
 				<div class="index__page_header">
+					<?php if(!wp_is_mobile()): ?>
+						<?php get_template_part( 'template-parts/main-nav-index' ); ?>
+					<?php else: ?>
+					<?php endif; ?>
 					<div id="index__main_image"></div>
-					<?php get_template_part( 'template-parts/main-nav-index' ); ?>
 				</div>
 			</section>
 		</div>

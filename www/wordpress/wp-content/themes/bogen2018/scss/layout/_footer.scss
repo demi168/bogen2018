@@ -2,6 +2,9 @@
 	width: $size__site-main;
 	&__logo {
 		@include column-width($numberColumns: 8);
+		@include if-phone {
+			@include column-width($numberColumns: 5);
+		}
 		margin: 0 auto .25em auto;
 		img {
 			width: 100%;

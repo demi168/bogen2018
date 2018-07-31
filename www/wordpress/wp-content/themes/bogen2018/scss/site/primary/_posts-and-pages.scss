@@ -1,5 +1,8 @@
 #page {
 	padding: 8vh 0;
+	@include if-phone {
+		padding: 0 0 4vh 0;
+	}
 }
 .content {
 	&__main {
@@ -10,6 +13,7 @@
 		width: 77.85% - $columns__margin;
 		@include if-phone {
 			width: 100%;
+			padding: 1.62em 0;
 		}
 	}
 	&__container {
@@ -27,6 +31,9 @@
 			}
 			&.section__flex {
 				display: flex;
+				@include if-phone {
+					flex-direction: column;
+				}
 			}
 		}
 	}
@@ -35,6 +42,9 @@
 		margin-bottom: 1em;
 		@include font-size(0.72);
 		letter-spacing: .05em;
+		@include if-phone {
+			display: none;
+		}
 	}
 }
 
@@ -44,18 +54,15 @@
 	&__page_header {
 		position: relative;
 		margin-bottom: 8vh;
+		@include if-phone {
+			margin-bottom: 0;
+		}
 		#index__main_image {
 			top: 0;
 			height: auto;
 			width: 100%;
 			padding-top: 62%;
 			position: relative;
-		}
-		.nav__main {
-			position: absolute;
-			top: 5vh;
-			left: 3vw;
-			z-index: 1;
 		}
 	}
 }
