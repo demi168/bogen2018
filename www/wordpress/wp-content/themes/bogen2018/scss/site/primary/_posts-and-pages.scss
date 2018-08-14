@@ -17,7 +17,7 @@
 		}
 	}
 	&__container {
-		margin: 0 4vw;
+		margin: 0 4vw 4vw 4vw;
 		section {
 			&.section {
 				margin-bottom: 4vh;
@@ -133,6 +133,7 @@
 			}
 			&_info {
 				color: $color__link;
+				@include font-size(0.72);
 				a {
 					text-decoration: none;
 				}
@@ -180,6 +181,38 @@
 		line-height: $font__line-height-body;
 		p {
 			margin-bottom: 1em;
+		}
+		img {
+			margin: 2em 0;
+		}
+		&_flex {
+			display: flex;
+			@include if-phone {
+				flex-direction: column;
+			}
+		}
+		&_side {
+			@include column-width($numberColumns: 4);
+			flex: 1;
+			@include font-size(0.78);
+			letter-spacing: .05em;
+			word-break: keep-all;
+			line-height: 2;
+			font-family: $font__caption;
+			color: $color__link;
+			@include if-phone {
+				@include column-width($numberColumns: 1);
+				order: 2;
+				margin-top: 2em;
+			}
+		}
+		&_main {
+			width: 77.85% - $columns__margin;
+			padding-left: $columns__margin;
+			@include if-phone {
+				@include column-width($numberColumns: 1);
+				padding-left: 0;
+			}
 		}
 		&_shoplist {
 			p {
