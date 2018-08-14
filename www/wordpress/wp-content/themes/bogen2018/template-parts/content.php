@@ -24,23 +24,28 @@
 	<?php bogen2018_post_thumbnail(); ?>
 
 	<div class="post__content">
-		<?php
-		the_content( sprintf(
-			wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers */
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bogen2018' ),
-				array(
-					'span' => array(
-						'class' => array(),
-					),
-				)
-			),
-			get_the_title()
-		) );
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bogen2018' ),
-			'after'  => '</div>',
-		) );
-		?>
+		<div class="post__content_side">
+			<?php echo post_custom('English'); ?>
+		</div>
+		<div class="post__content_main">
+			<?php
+			the_content( sprintf(
+				wp_kses(
+					/* translators: %s: Name of current post. Only visible to screen readers */
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bogen2018' ),
+					array(
+						'span' => array(
+							'class' => array(),
+						),
+					)
+				),
+				get_the_title()
+			) );
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bogen2018' ),
+				'after'  => '</div>',
+			) );
+			?>
+		</div>
 	</div><!-- .post__content -->
 </article><!-- #post-<?php the_ID(); ?> -->
