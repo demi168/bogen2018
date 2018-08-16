@@ -18,6 +18,6 @@
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.backstretch.min.js"></script>
 </head>
 <body <?php body_class(); ?>>
-	<div id="wptime-plugin-preloader"></div>
-	<div id="page" class="site">
+	<div id="wptime-plugin-preloader"></div><!-- Loading -->
+	<div class="site">
 		<main class="content__main">

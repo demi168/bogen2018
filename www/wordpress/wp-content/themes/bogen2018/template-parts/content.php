@@ -1,11 +1,3 @@
-<?php
-/**
- * Template part for displaying posts
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- * @package bogen2018
- */
-?>
-
 <article id="post_<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="post__header">
 		<?php
@@ -13,46 +5,55 @@
 			if ( 'post' === get_post_type() ) :
 		?>
 		<?php endif; ?>
+
+		<!-- カスタムフィールド：English_Title があれば表示 -->
+		<?php $customfield = get_post_meta($post->ID, 'English_Title', true); ?>
+		<?php if( empty($customfield) ): ?>
+			<?php else: ?>
+				<h2 class="post__header_title_english"><?php echo post_custom('English_Title'); ?></h2>
+		<?php endif; ?>
+
 		<p class="post__header_meta">
 			<?php bogen2018_entry_footer(); ?>
 		</p>
 		<p class="post__header_meta">
 			<?php the_time('Y.m.d'); ?>
+			by
+			<?php the_author_posts_link(); ?>
 		</p>
 	</header>
-
 	<!-- ?php bogen2018_post_thumbnail(); ? -->
 
 	<!-- カスタムフィールド：English があれば表示 -->
 	<?php $customfield = get_post_meta($post->ID, 'English', true); ?>
 	<?php if( empty($customfield) ): ?>
 		<div class="post__content">
-	<?php else: ?>
-		<div class="post__content_flex">
-			<div class="post__content_side">
-				<?php echo post_custom('English'); ?>
-			</div>
-
-		<div class="post__content_main">
+		<?php else: ?>
+			<div class="post__content_flex">
+				<div class="post__content_side">
+					<?php echo post_custom('English'); ?>
+				</div>
+			<div class="post__content_main">
 	<?php endif; ?>
-			<?php
-			the_content( sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bogen2018' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
+
+	<?php
+	the_content( sprintf(
+		wp_kses(
+			/* translators: %s: Name of current post. Only visible to screen readers */
+			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bogen2018' ),
+			array(
+				'span' => array(
+					'class' => array(),
 				),
-				get_the_title()
-			) );
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bogen2018' ),
-				'after'  => '</div>',
-			) );
-			?>
+			)
+		),
+		get_the_title()
+	) );
+	wp_link_pages( array(
+		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bogen2018' ),
+		'after'  => '</div>',
+	) );
+	?>
 			<!-- カスタムフィールド：商品リンクがあれば表示 -->
 			<?php $customfield = get_post_meta($post->ID, '商品リンク', true); ?>
 			<?php if( empty($customfield) ): ?>

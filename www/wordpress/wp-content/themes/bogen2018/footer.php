@@ -1,3 +1,4 @@
+
 	<footer class="site-footer">
 		<p class="site-footer__logo">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo_type.png" alt="<?php bloginfo('name') ?>"></a>

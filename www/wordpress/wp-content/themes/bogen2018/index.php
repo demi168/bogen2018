@@ -106,14 +106,14 @@
 				?>
 			</section>
 
-			<!-- Column Lists -->
+			<!-- B-side Lists -->
 			<section class="section">
-				<h1 class="section__caption">COLUMN</h1>
+				<h1 class="section__caption">B-SIDE</h1>
 				<div class="article__list">
 					<?php
 						$arg = array(
 							'posts_per_page' => 2, // 表示する件数
-							'category_name' => 'blog' // 表示したいカテゴリーのスラッグを指定
+							'category_name' => 'b-side' // 表示したいカテゴリーのスラッグを指定
 						);
 						$posts = get_posts( $arg );
 						if( $posts ):

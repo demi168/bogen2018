@@ -15,12 +15,9 @@
 					get_template_part( 'template-parts/content', get_post_type() );
 				endwhile; // End of the loop.
 				?>
-			</div><!-- /.article__single -->
+			</div><!-- /.content__container -->
 		</section>
-	</div><!-- /.content__container -->
 
-
-	<div class="content__container">
 		<div class="article__list">
 			<?php
 				$post_id = get_the_ID();
@@ -65,6 +62,7 @@
 			<?php endif; ?>
 			<?php wp_reset_query(); ?>
 		</div>
-	</div><!-- /.content__container -->
+
+	</div>
 
 <?php get_footer(); ?>

@@ -1229,12 +1229,12 @@ a.link__black {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-#page {
+.site {
   padding: 8vh 0;
 }
 
 @media screen and (max-width: 768px) {
-  #page {
+  .site {
     padding: 0 0 4vh 0;
   }
 }
@@ -1256,11 +1256,11 @@ a.link__black {
 }
 
 .content__container {
-  margin: 0 4vw 4vw 4vw;
+  margin-bottom: 2em;
 }
 
 .content__container section.section {
-  margin-bottom: 4vh;
+  margin-bottom: 2em;
 }
 
 .content__container section.section .section__caption {
@@ -1325,6 +1325,7 @@ a.link__black {
 
 /* ARTICLE UNITS */
 .article__list {
+  margin-bottom: 2em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1344,7 +1345,7 @@ a.link__black {
 
 .article__list_unit {
   width: 30.79667%;
-  margin-bottom: 4vh;
+  margin-bottom: 2em;
 }
 
 @media screen and (max-width: 768px) {
@@ -1461,7 +1462,12 @@ a.link__black {
 .post__header_title {
   font-size: 25.92px;
   font-size: 1.62rem;
-  margin-bottom: 1em;
+}
+
+.post__header_title_english {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
 }
 
 .post__header_meta {
@@ -1469,7 +1475,7 @@ a.link__black {
   font-size: 14.08px;
   font-size: 0.88rem;
   color: #888;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .post__content {

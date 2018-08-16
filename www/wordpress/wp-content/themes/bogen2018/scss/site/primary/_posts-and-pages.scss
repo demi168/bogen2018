@@ -1,4 +1,4 @@
-#page {
+.site {
 	padding: 8vh 0;
 	@include if-phone {
 		padding: 0 0 4vh 0;
@@ -17,10 +17,10 @@
 		}
 	}
 	&__container {
-		margin: 0 4vw 4vw 4vw;
+		margin-bottom: 2em;
 		section {
 			&.section {
-				margin-bottom: 4vh;
+				margin-bottom: 2em;
 				.section__caption {
 					font-family: $font__caption;
 					@include font-size(1.36);
@@ -71,6 +71,7 @@
 /* ARTICLE UNITS */
 .article {
 	&__list {
+		margin-bottom: 2em;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
@@ -80,7 +81,7 @@
 			@include if-phone {
 				@include column-width($numberColumns: 1);
 			}
-			margin-bottom: 4vh;
+			margin-bottom: 2em;
 			&_thumb {
 				width: 100%;
 				height: auto;
@@ -168,13 +169,17 @@
 		margin-bottom: 2em;
 		&_title {
 			@include font-size(1.62);
-			margin-bottom: 1em;
+			//margin-bottom: 1em;
+			&_english {
+				font-family: $font__caption;
+				@include font-size(1);
+			}
 		}
 		&_meta {
 			font-family: $font__caption;
 			@include font-size(0.88);
 			color: $color__link;
-			margin-bottom: 1em;
+			margin-top: 1em;
 		}
 	}
 	&__content {
