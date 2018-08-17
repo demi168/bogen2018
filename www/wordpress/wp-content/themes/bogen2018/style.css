@@ -949,11 +949,12 @@ a.link__black {
   display: none;
 }
 
-.nav__main ul li.current-menu-item a, .nav__main ul li.current_page_item a {
+.nav__main ul li.current-menu-item a, .nav__main ul li.current_page_item a,
+.nav__main ul li.current-post-ancestor .current-post-parent a, .nav__main ul li.current-post-ancestor.current-menu-parent a {
   color: #000;
 }
 
-.nav__main ul li.menu-item-has-children.current-menu-item .sub-menu, .nav__main ul li.current-menu-ancestor .sub-menu {
+.nav__main ul li.menu-item-has-children.current-menu-item .sub-menu, .nav__main ul li.current-menu-ancestor .sub-menu, .nav__main ul li.current-post-parent .sub-menu {
   display: block;
   font-size: 17.28px;
   font-size: 1.08rem;
@@ -991,7 +992,7 @@ a.link__black {
 }
 
 .nav__wrap a {
-  color: #000;
+  color: #888;
   text-decoration: none;
 }
 
@@ -1256,11 +1257,11 @@ a.link__black {
 }
 
 .content__container {
-  margin-bottom: 2em;
+  margin: 0 4vw;
 }
 
 .content__container section.section {
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 }
 
 .content__container section.section .section__caption {
@@ -1325,7 +1326,6 @@ a.link__black {
 
 /* ARTICLE UNITS */
 .article__list {
-  margin-bottom: 2em;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1436,7 +1436,7 @@ a.link__black {
 }
 
 .article__list_pagenation {
-  margin: 3em auto 5em auto;
+  margin: 0 auto 5em auto;
   text-align: center;
 }
 
@@ -1557,6 +1557,43 @@ a.link__black {
 .post__content_shoplist h4 {
   margin-bottom: .5em;
   font-weight: bold;
+}
+
+/* 署名表示 Simple Author Box override */
+.saboxplugin-wrap {
+  border: none;
+  margin-top: 3em !important;
+  padding-top: 1em !important;
+  border-top: 2px solid #000;
+}
+
+.saboxplugin-gravatar {
+  padding: 1em 2em 1em 0 !important;
+}
+
+.saboxplugin-gravatar img {
+  max-width: 82px !important;
+  max-height: 82px !important;
+}
+
+.saboxplugin-authorname {
+  margin: 1em 0 0 0;
+  font-size: 25.92px;
+  font-size: 1.62rem;
+  font-weight: bold;
+}
+
+.saboxplugin-authorname a {
+  color: #000 !important;
+}
+
+.saboxplugin-authorname a:hover {
+  color: #888;
+}
+
+.saboxplugin-desc {
+  margin: .5em 0 !important;
+  line-height: 1.62;
 }
 
 /*--------------------------------------------------------------

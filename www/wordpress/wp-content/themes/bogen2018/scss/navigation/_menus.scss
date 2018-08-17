@@ -41,13 +41,16 @@
 					display: none;
 				}
 				&.current-menu-item,
-				&.current_page_item {
+				&.current_page_item,
+				&.current-post-ancestor .current-post-parent,
+				&.current-post-ancestor.current-menu-parent  {
 					a {
 						color: #000;
 					}
 				}
 				&.menu-item-has-children.current-menu-item,
-				&.current-menu-ancestor {
+				&.current-menu-ancestor,
+				&.current-post-parent {
 					.sub-menu {
 						display: block;
 						@include font-size(1.08);
@@ -89,7 +92,7 @@
 }
 .nav__wrap {
 	a {
-		color: #000;
+		color: $color__link;
 		text-decoration: none;
 	}
 	&_logo {

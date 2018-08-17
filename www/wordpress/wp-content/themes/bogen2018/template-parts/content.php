@@ -22,46 +22,52 @@
 			<?php the_author_posts_link(); ?>
 		</p>
 	</header>
-	<!-- ?php bogen2018_post_thumbnail(); ? -->
 
-	<!-- カスタムフィールド：English があれば表示 -->
 	<?php $customfield = get_post_meta($post->ID, 'English', true); ?>
 	<?php if( empty($customfield) ): ?>
 		<div class="post__content">
 		<?php else: ?>
-			<div class="post__content_flex">
-				<div class="post__content_side">
-					<?php echo post_custom('English'); ?>
-				</div>
+		<!-- カスタムフィールド：English があれば表示 -->
+		<div class="post__content_flex">
+			<div class="post__content_side">
+				<?php echo post_custom('English'); ?>
+			</div>
 			<div class="post__content_main">
 	<?php endif; ?>
 
 	<?php
-	the_content( sprintf(
-		wp_kses(
-			/* translators: %s: Name of current post. Only visible to screen readers */
-			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bogen2018' ),
-			array(
-				'span' => array(
-					'class' => array(),
-				),
-			)
-		),
-		get_the_title()
-	) );
-	wp_link_pages( array(
-		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bogen2018' ),
-		'after'  => '</div>',
-	) );
+		the_content( sprintf(
+			wp_kses(
+				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'bogen2018' ),
+				array(
+					'span' => array(
+						'class' => array(),
+					),
+				)
+			),
+			get_the_title()
+		) );
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bogen2018' ),
+			'after'  => '</div>',
+		) );
 	?>
-			<!-- カスタムフィールド：商品リンクがあれば表示 -->
-			<?php $customfield = get_post_meta($post->ID, '商品リンク', true); ?>
-			<?php if( empty($customfield) ): ?>
-			<?php else: ?>
-				<a href="<?php echo esc_html( $post->商品リンク ); ?>" target="_blank" class="button button__black">
-					購入する
-				</a>
-			<?php endif; ?>
-		</div>
+
+	<!-- カスタムフィールド：商品リンクがあれば表示 -->
+	<?php $customfield = get_post_meta($post->ID, '商品リンク', true); ?>
+	<?php if( empty($customfield) ): ?>
+	<?php else: ?>
+		<a href="<?php echo esc_html( $post->商品リンク ); ?>" target="_blank" class="button button__black">
+			購入する
+		</a>
+	<?php endif; ?>
+
+	<?php if( empty($customfield) ): ?>
+		<div class="post__content">
+		<?php else: ?>
+		<!-- カスタムフィールド：English があれば表示 -->
+		</div><!-- .post__content_main -->
+	<?php endif; ?>
+
 	</div><!-- .post__content -->
 </article>

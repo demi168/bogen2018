@@ -17,10 +17,10 @@
 		}
 	}
 	&__container {
-		margin-bottom: 2em;
+		margin: 0 4vw;
 		section {
 			&.section {
-				margin-bottom: 2em;
+				margin-bottom: 4em;
 				.section__caption {
 					font-family: $font__caption;
 					@include font-size(1.36);
@@ -71,7 +71,7 @@
 /* ARTICLE UNITS */
 .article {
 	&__list {
-		margin-bottom: 2em;
+		// margin-bottom: 2em;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-start;
@@ -141,7 +141,7 @@
 			}
 		}
 		&_pagenation {
-			margin: 3em auto 5em auto;
+			margin: 0 auto 5em auto;
 			text-align: center;
 			.page-numbers {
 				&:after {
@@ -232,5 +232,39 @@
 				font-weight: bold;
 			}
 		}
+	}
+}
+
+
+
+/* 署名表示 Simple Author Box override */
+.saboxplugin {
+	&-wrap {
+		border: none;
+		margin-top: 3em !important;
+		padding-top: 1em !important;
+		border-top: 2px solid #000;
+	}
+	&-gravatar {
+		padding: 1em 2em 1em 0 !important;
+		img {
+			max-width: 82px !important;
+			max-height: 82px !important;
+		}
+	}
+	&-authorname {
+		margin: 1em 0 0 0;
+		@include font-size(1.62);
+		font-weight: bold;
+		a {
+			color: #000 !important;
+			&:hover {
+				color: $color__link;
+			}
+		}
+	}
+	&-desc {
+		margin: .5em 0 !important;
+		line-height: 1.62;
 	}
 }

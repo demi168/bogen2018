@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 	<div class="content__container">
 		<div class="content__breadcrumbs">
     	<?php if(function_exists('bcn_display')){ bcn_display(); }?>
@@ -15,7 +16,7 @@
 					get_template_part( 'template-parts/content', get_post_type() );
 				endwhile; // End of the loop.
 				?>
-			</div><!-- /.content__container -->
+			</div>
 		</section>
 
 		<div class="article__list">
@@ -62,7 +63,6 @@
 			<?php endif; ?>
 			<?php wp_reset_query(); ?>
 		</div>
-
-	</div>
+	</div><!-- /.content__container -->
 
 <?php get_footer(); ?>
