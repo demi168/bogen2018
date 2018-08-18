@@ -24,6 +24,7 @@ Version: 1.0.0
 # Media
 	## Captions
 	## Galleries
+# Shop
 --------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 /*
@@ -1716,6 +1717,19 @@ object {
 
 .gallery-caption {
   display: block;
+}
+
+/*--------------------------------------------------------------
+# Shop
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Shop カラーミー用CSS
+--------------------------------------------------------------*/
+#policy h2 {
+  margin-bottom: 1em;
+  font-weight: bold;
+  font-size: 21.76px;
+  font-size: 1.36rem;
 }
 
 /*# sourceMappingURL=style.css.map */
