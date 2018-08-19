@@ -1,0 +1,236 @@
+<div id="product">
+  <{if $product.id != ""}>
+    <form name="product_form" method="post" action="<{$cart_url}>">
+      <!-- 商品画像 -->
+      <div class="product-image row">
+        <div class="product-image-main col col-sm-12 col-lg-8">
+          <{if $product.img_url != ""}>
+            <img src="<{$product.img_url}>" class="mainImage" />
+          <{else}>
+            <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="mainImage" alt="<{$productlist[num].name}>" />
+          <{/if}>
+        </div>
+        <div class="product-image-thumb col col-sm-12 col-lg-4">
+          <ul class="row">
+            <li class="col col-sm－2 col-lg-6">
+              <{if $product.img_url != ""}>
+                <img src="<{$product.img_url}>" class="thumb" />
+              <{else}>
+                <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="thumb" alt="<{$productlist[num].name}>" />
+              <{/if}>
+            </li>
+            <{section name=num loop=$otherimg}>
+              <{if $otherimg[num].url != ""}>
+              <li class="col col-sm－2 col-lg-6">
+                <img src="<{$otherimg[num].url}>" class="thumb" />
+              </li>
+              <{/if}>
+            <{/section}>
+          </ul>
+        </div>
+      </div>
+      <!-- //商品画像 -->
+
+      <h2><{$product_name}></h2>
+      <!-- 商品説明文 -->
+
+      <{if $product.explain != ""}>
+        <div class="product-order-exp clearfix">
+          <{$product.explain}>
+        </div>
+      <{/if}>
+      <!-- //商品説明文 -->
+
+      <div class="product-order">
+        <ul class="inline unstyled product-order-price">
+          <{if $members_login_flg == true && $product.discount_flg == true}>
+            <li class="product-order-regular"><{$product.regular_price}></li>
+          <{/if}>
+          <li><{$product.sales}></li>
+          <{if $members_login_flg == true && $product.discount_flg == true}>
+            <li class="product-order-discount"><{$product.discount_rate}>OFF!!</li>
+          <{/if}>
+        </ul>
+        <{if $opt_url != ""}>
+          <div class="prduct-option">
+            <{if $option_output_mode}>
+              <div id="prd-opt-table" class="table product-option-table">
+                <{$option_table}>
+              </div>
+              <div class="product-option-select">
+                <div id="prd-opt-select" class="product-option-wrapper">
+                  <{section name=num loop=$option}>
+                    <div class="product-option-unit">
+                      <div>
+                        <span class="option-select-name"><{$option[num].name}></span>
+                        <select name="<{$option[num].select_name}>">
+                          <{html_options values=$option_value[num].id output=$option_value[num].name selected=$key}>
+                        </select>
+                      </div>
+                    </div>
+                  <{/section}>
+                </div>
+              </div>
+            <{else}>
+              <div class="product-option-select">
+                <div class="product-option-wrapper">
+                  <{section name=num loop=$option}>
+                    <div class="product-option-unit">
+                      <div>
+                        <span class="option-select-name"><{$option[num].name}></span>
+                        <select name="<{$option[num].select_name}>">
+                          <{html_options values=$option_value[num].id output=$option_value[num].name selected=$key}>
+                        </select>
+                      </div>
+                    </div>
+                  <{/section}>
+                </div>
+              </div>
+            <{/if}>
+          </div>
+        <{/if}>
+        <div class="row product-order-input">
+          <{if $shop_stop_flg == false && $product.soldout_flg == 0 && $product.login_sale_flg == false}>
+            <div class="col col-sm-12 product-order-num">
+              <div class="input-prepend input-append">
+                <a href="<{$num_up_url}>" class="btn btn-02"><i class="icon-lg-w icon-chevron_up"></i></a>
+                <input type="text" name="product_num" value="<{$product.init_num}>" class="product-init-num" />
+                <a href="<{$num_dw_url}>" class="btn btn-02"><i class="icon-lg-w icon-chevron_down"></i></a>
+              </div>
+              <div class="product-unit"><{$product.unit}></div>
+            </div>
+          <{/if}>
+          <{if $product.soldout_flg == 0 && $shop_stop_flg == false && $product.login_sale_flg == false}>
+            <div class="disable_cartin col col-sm-12">
+              <button class="btn btn-01 btn-lg btn-addcart google-font" type="submit"><div class="btn-wrap"><i class="icon-lg-w icon-cart"></i><span>add to cart</span></div></button>
+            </div>
+            <{if $easy_order_flg == true}>
+              <div class="disable_quick col col-sm-12">
+                <a href="<{$easy_order_url}>" class="btn btn-01 btn-lg btn-quick">クイック購入</a>
+              </div>
+            <{/if}>
+          <{else}>
+            <div class="col col-lg-3">
+              <{if $product.soldout_flg == 1}>
+                <button class="btn btn-01 btn-lg btn-block google-font" type="button" disabled="disabled">sold out</button>
+              <{elseif $product.login_sale_flg == true}>
+                <div class="product-member-sale-msg">会員のみ購入できます</div>
+              <{/if}>
+            </div>
+          <{/if}>
+          <p class="stock_error"></p>
+        </div>
+      </div>
+      <div class="product-info-lst container-section">
+        <ul class="unstyled">
+          <{if $opt_url != ""}>
+            <li><a href="<{$opt_url}>">オプションの値段詳細</a></li>
+          <{/if}>
+          <li><a href="<{$sk_url}>#info">特定商取引法に基づく表記（返品等）</a></li>
+          <li class="social-share">
+            <{* カラメルアフィリエイト *}>
+            <{if $calamel_use_flg == true}>
+              <{$calamel_affiliate_link_button}>
+            <{/if}>
+            <{* カラメルお気に入り *}>
+            <{$calamel_favorite_link_button}>
+          </li>
+        </ul>
+      </div>
+      <table class="table product-order-spec">
+        <{if $product.model != ""}>
+          <tr>
+            <th>型番</th>
+            <td><{$product.model}></td>
+          </tr>
+        <{/if}>
+        <{if $product.price_disp && $product.price != $product.sales}>
+          <tr>
+            <th>定価</th>
+            <td><{$product.price}></td>
+          </tr>
+        <{/if}>
+        <{if $product.stock_disp}>
+          <tr>
+            <th>在庫状況</th>
+            <td><{$product.stock_str}></td>
+          </tr>
+        <{/if}>
+      </table>
+
+      <{if $together_product_num != 0}>
+        <!-- 組合せ購入 -->
+        <div class="together-block">
+          <h2>あなたにおすすめの商品</h2>
+          <ul class="prd-lst row unstyled">
+            <{section name=num loop=$together_product}>
+              <li class="prd-lst-unit col-md-6 col-lg-4 col">
+                <a href="<{$together_product[num].link_url}>" class="prd_lst_link">
+                  <{if $together_product[num].img_url != ""}>
+                    <img src="<{$together_product[num].img_url}>" class="prd-lst-img" alt="<{$together_product[num].name}>" />
+                  <{else}>
+                    <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="prd-lst-img" alt="<{$together_product[num].name}>" />
+                  <{/if}>
+                </a>
+                <span class="prd-lst-name prd-lst-span">
+                  <a href="<{$together_product[num].link_url}>"><{$together_product[num].name}></a>
+                </span>
+              </li>
+            <{/section}>
+          </ul>
+        </div>
+        <!-- //組合せ購入 -->
+      <{/if}>
+
+      <{$product.info}>
+    </form>
+  <{else}>
+    <{if $product.hide_flg == true}>
+      <p>この商品を閲覧するにはログインが必要です。</p>
+    <{else}>
+      <p>現在、この商品は扱っておりません。</p>
+    <{/if}>
+  <{/if}>
+</div>
+
+<{if $option_output_mode}>
+  <div class="hide">
+    <div class="prd-opt-select">
+      <{section name=num loop=$option}>
+        <div class="product-option-unit">
+          <div>
+            <span class="option-select-name"><{$option[num].name}></span>
+            <select name="<{$option[num].select_name}>">
+              <{html_options values=$option_value[num].id output=$option_value[num].name selected=$key}>
+            </select>
+          </div>
+        </div>
+      <{/section}>
+    </div>
+    <div class="prd-opt-table table">
+      <{$option_table}>
+    </div>
+  </div>
+<{/if}>
+
+<script type="text/javascript">
+  $(function () {
+    $('.product-init-num').change(function(){
+      var txt  = $(this).val();
+      var han = txt.replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(s){return String.fromCharCode(s.charCodeAt(0)-0xFEE0)});
+      $(this).val(han);
+    });
+
+    $('img.thumb').click(function(){
+      $(this).parent().siblings().removeClass('thumb-active');
+      var selectedSrc = $(this).attr('src');
+      $('img.mainImage').stop().fadeOut(200,
+        function(){
+          $('img.mainImage').attr('src', selectedSrc);
+          $('img.mainImage').fadeIn(200);
+        }
+      );
+      $(this).parent().addClass('thumb-active');
+    });
+  });
+</script>

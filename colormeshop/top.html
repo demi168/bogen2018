@@ -1,0 +1,57 @@
+<{if $recommend_num != 0 || $seller_num != 0}>
+  <div class="recommend-items">
+    <h2 class="ttl-h2"><span class="google-font">recommended items</span></h2>
+    <ul class="prd-lst row unstyled">
+      <{section name=num loop=$recommend}>
+        <li class="prd-lst-unit col col-xs-12 col-sm-6 col-lg-4">
+          <a href="<{$recommend[num].link_url}>" class="prd_lst_link">
+            <{if $recommend[num].img_url != ""}>
+              <img src="<{$recommend[num].img_url}>" class="prd-lst-img" alt="<{$recommend[num].name}>" />
+            <{else}>
+              <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="prd-lst-img" alt="<{$recommend[num].name}>" />
+            <{/if}>
+          </a>
+          <span class="prd-lst-name prd-lst-span">
+            <a href="<{$recommend[num].link_url}>"><{$recommend[num].name}></a>
+          </span>
+          <{if $recommend[num].soldout_flg == false}>
+            <{if $members_login_flg == true && $recommend[num].discount_flg == true}>
+              <span class="prd-lst-regular prd-lst-span"><{$recommend[num].regular_price}></span>
+            <{/if}>
+            <span class="prd-lst-price prd-lst-span"><{$recommend[num].price}></span>
+            <{if $members_login_flg == true && $recommend[num].discount_flg == true}>
+              <span class="prd-lst-discount prd-lst-span"><{$recommend[num].discount_rate}>OFF!!</span>
+            <{/if}>
+          <{else}>
+            <span class="prd-lst-soldout prd-lst-span">SOLD OUT</span>
+          <{/if}>
+        </li>
+      <{/section}>
+      <{section name=num loop=$seller}>
+        <li class="prd-lst-unit col col-xs-12 col-sm-6 col-lg-4">
+          <a href="<{$seller[num].link_url}>" class="prd_lst_link">
+            <{if $seller[num].img_url != ""}>
+              <img src="<{$seller[num].img_url}>" class="prd-lst-img" alt="<{$seller[num].name}>" />
+            <{else}>
+              <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="prd-lst-img" alt="<{$seller[num].name}>" />
+            <{/if}>
+          </a>
+          <span class="prd-lst-name prd-lst-span">
+            <a href="<{$seller[num].link_url}>"><{$seller[num].name}></a>
+          </span>
+          <{if $seller[num].soldout_flg == false}>
+            <{if $members_login_flg == true && $seller[num].discount_flg == true}>
+              <span class="prd-lst-regular prd-lst-span"><{$seller[num].regular_price}></span>
+            <{/if}>
+            <span class="prd-lst-price prd-lst-span"><{$seller[num].price}></span>
+            <{if $members_login_flg == true && $seller[num].discount_flg == true}>
+              <span class="prd-lst-discount prd-lst-span"><{$seller[num].discount_rate}>OFF!!</span>
+            <{/if}>
+          <{else}>
+            <span class="prd-lst-soldout prd-lst-span">SOLD OUT</span>
+          <{/if}>
+        </li>
+      <{/section}>
+    </ul>
+  </div>
+<{/if}>
