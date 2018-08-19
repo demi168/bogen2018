@@ -89,7 +89,8 @@
   padding: 2em 0;
 	margin-top: 2em;
 	&-price {
-	  padding-bottom: 2em;
+	  margin: .5em 0 2em 0;
+		font-weight: bold;
 	  @include font-size(1);
 	}
 	&-regular {

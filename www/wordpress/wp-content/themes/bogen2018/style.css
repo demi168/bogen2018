@@ -1816,7 +1816,8 @@ object {
 }
 
 .product-order-price {
-  padding-bottom: 2em;
+  margin: .5em 0 2em 0;
+  font-weight: bold;
   font-size: 16px;
   font-size: 1rem;
 }
