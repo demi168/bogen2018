@@ -1,18 +1,18 @@
-<div id="product">
+<div class="article__single content__contents shop__products">
   <{if $product.id != ""}>
     <form name="product_form" method="post" action="<{$cart_url}>">
       <!-- 商品画像 -->
-      <div class="product-image row">
-        <div class="product-image-main col col-sm-12 col-lg-8">
+      <div class="product-image">
+        <div class="product-image-main">
           <{if $product.img_url != ""}>
             <img src="<{$product.img_url}>" class="mainImage" />
           <{else}>
             <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="mainImage" alt="<{$productlist[num].name}>" />
           <{/if}>
         </div>
-        <div class="product-image-thumb col col-sm-12 col-lg-4">
-          <ul class="row">
-            <li class="col col-sm－2 col-lg-6">
+        <div class="product-image-thumb">
+          <ul>
+            <li>
               <{if $product.img_url != ""}>
                 <img src="<{$product.img_url}>" class="thumb" />
               <{else}>
@@ -21,7 +21,7 @@
             </li>
             <{section name=num loop=$otherimg}>
               <{if $otherimg[num].url != ""}>
-              <li class="col col-sm－2 col-lg-6">
+              <li>
                 <img src="<{$otherimg[num].url}>" class="thumb" />
               </li>
               <{/if}>
@@ -31,26 +31,26 @@
       </div>
       <!-- //商品画像 -->
 
-      <h2><{$product_name}></h2>
-      <!-- 商品説明文 -->
+      <h1 class="post__header_title"><{$product_name}></h1>
+      <div class="product-order-price">
+        <{if $members_login_flg == true && $product.discount_flg == true}>
+          <h3 class="product-order-regular"><{$product.regular_price}></h3>
+        <{/if}>
+        <h3><{$product.sales}></h3>
+        <{if $members_login_flg == true && $product.discount_flg == true}>
+          <h3 class="product-order-discount"><{$product.discount_rate}>OFF!!</h3>
+        <{/if}>
+      </div>
+      <!-- 商品名 -->
 
       <{if $product.explain != ""}>
-        <div class="product-order-exp clearfix">
+        <div class="post__content clearfix">
           <{$product.explain}>
         </div>
       <{/if}>
       <!-- //商品説明文 -->
 
       <div class="product-order">
-        <ul class="inline unstyled product-order-price">
-          <{if $members_login_flg == true && $product.discount_flg == true}>
-            <li class="product-order-regular"><{$product.regular_price}></li>
-          <{/if}>
-          <li><{$product.sales}></li>
-          <{if $members_login_flg == true && $product.discount_flg == true}>
-            <li class="product-order-discount"><{$product.discount_rate}>OFF!!</li>
-          <{/if}>
-        </ul>
         <{if $opt_url != ""}>
           <div class="prduct-option">
             <{if $option_output_mode}>
@@ -89,30 +89,28 @@
             <{/if}>
           </div>
         <{/if}>
-        <div class="row product-order-input">
+
+        <div class="product-order-input">
           <{if $shop_stop_flg == false && $product.soldout_flg == 0 && $product.login_sale_flg == false}>
-            <div class="col col-sm-12 product-order-num">
-              <div class="input-prepend input-append">
-                <a href="<{$num_up_url}>" class="btn btn-02"><i class="icon-lg-w icon-chevron_up"></i></a>
-                <input type="text" name="product_num" value="<{$product.init_num}>" class="product-init-num" />
-                <a href="<{$num_dw_url}>" class="btn btn-02"><i class="icon-lg-w icon-chevron_down"></i></a>
-              </div>
+            <div class="product-order-num">
+              <p>数量</p>
+              <input type="text" name="product_num" value="<{$product.init_num}>" class="product-init-num" />
               <div class="product-unit"><{$product.unit}></div>
             </div>
           <{/if}>
           <{if $product.soldout_flg == 0 && $shop_stop_flg == false && $product.login_sale_flg == false}>
-            <div class="disable_cartin col col-sm-12">
-              <button class="btn btn-01 btn-lg btn-addcart google-font" type="submit"><div class="btn-wrap"><i class="icon-lg-w icon-cart"></i><span>add to cart</span></div></button>
+            <div class="disable_cartin">
+              <button class="button button__black" type="submit">購入する</button>
             </div>
             <{if $easy_order_flg == true}>
-              <div class="disable_quick col col-sm-12">
-                <a href="<{$easy_order_url}>" class="btn btn-01 btn-lg btn-quick">クイック購入</a>
+              <div class="disable_quick">
+                <a href="<{$easy_order_url}>" class="button button__black">クイック購入</a>
               </div>
             <{/if}>
           <{else}>
             <div class="col col-lg-3">
               <{if $product.soldout_flg == 1}>
-                <button class="btn btn-01 btn-lg btn-block google-font" type="button" disabled="disabled">sold out</button>
+                <button class="button button__disabled" type="button" disabled="disabled">SOLD OUT</button>
               <{elseif $product.login_sale_flg == true}>
                 <div class="product-member-sale-msg">会員のみ購入できます</div>
               <{/if}>
@@ -126,15 +124,7 @@
           <{if $opt_url != ""}>
             <li><a href="<{$opt_url}>">オプションの値段詳細</a></li>
           <{/if}>
-          <li><a href="<{$sk_url}>#info">特定商取引法に基づく表記（返品等）</a></li>
-          <li class="social-share">
-            <{* カラメルアフィリエイト *}>
-            <{if $calamel_use_flg == true}>
-              <{$calamel_affiliate_link_button}>
-            <{/if}>
-            <{* カラメルお気に入り *}>
-            <{$calamel_favorite_link_button}>
-          </li>
+          <li><a href="<{$sk_url}>#info">特定商取引法に基づく表記</a></li>
         </ul>
       </div>
       <table class="table product-order-spec">
@@ -220,7 +210,6 @@
       var han = txt.replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(s){return String.fromCharCode(s.charCodeAt(0)-0xFEE0)});
       $(this).val(han);
     });
-
     $('img.thumb').click(function(){
       $(this).parent().siblings().removeClass('thumb-active');
       var selectedSrc = $(this).attr('src');

@@ -1,10 +1,17 @@
 <link rel='stylesheet' id='bogen2018-style-css'  href='http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018_upload/style.css?ver=4.9.8' type='text/css' media='all' />
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <div class="site">
   <main class="content__main">
     <div class="content__container">
       <section class="section section__flex">
+        <!-- カートボタン -->
+        <div class="view-cart">
+          <a href="<{$view_cart_url}>" class="view-cart_btn">
+            <i class="fas fa-shopping-cart"></i><span><{$incart_total_count}></span>
+          </a>
+        </div>
         <!-- Side Navigation -->
         <div class="nav__main">
           <div class="nav__main_logo">
@@ -118,17 +125,8 @@
           });
         </script>
 
-
-        <div class="article__list content__contents">
-          <!-- メインコンテンツ -->
-          <div class="view-cart">
-            <!-- カートボタン -->
-            <a href="<{$view_cart_url}>" class="view-cart_btn">
-              <i class="icon-w icon-cart"></i><span>カート：</span><span><{$incart_total_count}></span>
-            </a>
-          </div>
-          <{include file = $file_name}>
-        </div><!-- ./content__contents -->
+        <!-- メインコンテンツ -->
+        <{include file = $file_name}>
       </div>
     </main>
 

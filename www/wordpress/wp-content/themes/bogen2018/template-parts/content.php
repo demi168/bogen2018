@@ -62,6 +62,7 @@
 		</a>
 	<?php endif; ?>
 
+	<?php $customfield = get_post_meta($post->ID, 'English', true); ?>
 	<?php if( empty($customfield) ): ?>
 		<div class="post__content">
 		<?php else: ?>
