@@ -16,6 +16,9 @@ input[type="submit"] {
 	text-decoration: none;
 	text-align: center;
 	padding: .75em 2em;
+	@include if-phone {
+		width: 100%;
+	}
 	&__black {
 		background: #000;
 		color: #fff;

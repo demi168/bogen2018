@@ -16,7 +16,7 @@
 			line-height: 0;
 			@include if-phone {
 				width: 32px;
-				margin-bottom: 0;
+				margin: 0 auto 0 0;
 			}
 			img {
 				width: 100%;
