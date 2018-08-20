@@ -109,45 +109,7 @@
 			<!-- B-side Lists -->
 			<section class="section">
 				<h1 class="section__caption">B-SIDE</h1>
-				<div class="article__list">
-					<?php
-						$arg = array(
-							'posts_per_page' => 2, // 表示する件数
-							'category_name' => 'b-side' // 表示したいカテゴリーのスラッグを指定
-						);
-						$posts = get_posts( $arg );
-						if( $posts ):
-					?>
-			    <?php foreach($posts as $post) : setup_postdata($post); ?>
-			      <article class="article__list_unit column">
-							<div  class="article__list_unit_thumb">
-								<a href="<?php the_permalink(); ?>">
-									<?php if (has_post_thumbnail()) : ?>
-										<?php the_post_thumbnail('thumbnail'); ?>
-									<?php else : ?>
-										<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
-									<?php endif ; ?>
-								</a>
-							</div>
-							<header>
-								<h1 class="article__list_unit_title">
-									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-								</h1>
-								<p class="article__list_unit_info">
-									<span><?php the_time('Y.m.d'); ?></span>
-									<span>|</span>
-									<span>
-										<?php echo get_the_category_list( ' ,' ); ?>
-									</span>
-								</p>
-							</header>
-			      </article>
-			    <?php endforeach; ?>
-				</div>
-				<?php
-					endif;
-					wp_reset_postdata();
-				?>
+				<p>月1回更新のコラムがはじまります。今書いていただいているので、もうしばらくお待ちくださいませ。</p>
 			</section>
 
 		</div><!-- /.content__container -->
