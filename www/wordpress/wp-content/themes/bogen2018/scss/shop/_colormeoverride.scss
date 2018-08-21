@@ -50,11 +50,12 @@
 	}
   &-main {
 		margin-bottom: 2em;
+		text-align: center;
 		@include if-phone {
 			margin-bottom: 1em;
 		}
 		img {
-			width: 100%;
+			max-width: 100%;
 		}
   }
   &-thumb {
@@ -99,7 +100,7 @@
 }
 .product-order {
 	border-top: 1px solid #000;
-  padding: 2em 0;
+  padding: 2em 0 4em 0;
 	margin-top: 2em;
 	&-price {
 	  margin: .5em 0 2em 0;

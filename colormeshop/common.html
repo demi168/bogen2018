@@ -28,74 +28,31 @@
             </div>
             <div class="menu-menu-1-container">
               <ul id="menu-menu-1" class="menu">
-                <li id="menu-item-1885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1885">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1885">
                   <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/about/">ABOUT</a>
                 </li>
-                <li id="menu-item-1866" class="menu-item menu-item-type-taxonomy menu-item-object-category current-menu-item menu-item-has-children menu-item-1866">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item menu-item-has-children">
+                  <a href="<{$home_url}>">SHOP</a>
+                  <ul class="sub-menu">
+                    <{section name=num loop=$category}>
+                      <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                        <a href="<{$category[num].link_url}>">
+                          <{$category[num].name}>
+                        </a>
+                      </li>
+                    <{/section}>
+                  </ul>
+                </li>
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
                   <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/">PRODUCTS</a>
-                  <ul class="sub-menu">
-                    <li id="menu-item-1867" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1867">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/baselayer/">Baselayer</a>
-                    </li>
-                    <li id="menu-item-1868" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1868">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/goods/">Goods</a>
-                    </li>
-                    <li id="menu-item-1869" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1869">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/hats/">Hats</a>
-                    </li>
-                    <li id="menu-item-1870" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1870">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/jewellery/">Jewellery</a>
-                    </li>
-                    <li id="menu-item-1871" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1871">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/outer/">Outer</a>
-                    </li>
-                    <li id="menu-item-1872" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1872">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/pants/">Pants</a>
-                    </li>
-                    <li id="menu-item-1873" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1873">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/shirts/">Shirts</a>
-                    </li>
-                    <li id="menu-item-1874" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1874">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/socks/">Socks</a>
-                    </li>
-                    <li id="menu-item-1875" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1875">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/sweater/">Sweater</a>
-                    </li>
-                    <li id="menu-item-1876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1876">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/products/t-shirts/">T-shirts</a>
-                    </li>
-                  </ul>
                 </li>
-                <li id="menu-item-1858" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1858">
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
                   <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/">BLOG</a>
-                  <ul class="sub-menu">
-                    <li id="menu-item-1859" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1859">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/book/">Book</a>
-                    </li>
-                    <li id="menu-item-1860" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1860">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/car/">Car</a>
-                    </li>
-                    <li id="menu-item-1861" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/event/">Event</a>
-                    </li>
-                    <li id="menu-item-1862" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1862">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/fashion/">Fashion</a>
-                    </li>
-                    <li id="menu-item-1863" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1863">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/mono/">Mono</a>
-                    </li>
-                    <li id="menu-item-1864" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1864">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/other/">Other</a>
-                    </li>
-                    <li id="menu-item-1865" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1865">
-                      <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/blog/people/">People</a>
-                    </li>
-                  </ul>
                 </li>
-                <li id="menu-item-1883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1883">
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
                   <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/category/b-side/">B-SIDE</a>
                 </li>
-                <li id="menu-item-1884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1884">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page">
                   <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/stockist/">STOCKIST</a>
                 </li>
               </ul>
@@ -166,7 +123,3 @@
     </footer>
   </div>
 </div><!-- /.site -->
-
-<script src="http://img.shop-pro.jp/tmpl_js/69/jquery.skOuterClick.js"></script>
-<script src="http://img.shop-pro.jp/tmpl_js/69/jquery.tile.js"></script>
-<script src="http://img.shop-pro.jp/tmpl_js/69/smoothscroll.js"></script>

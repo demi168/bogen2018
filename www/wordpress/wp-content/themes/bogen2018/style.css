@@ -1770,6 +1770,7 @@ object {
 
 .product-image-main {
   margin-bottom: 2em;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -1779,7 +1780,7 @@ object {
 }
 
 .product-image-main img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .product-image-thumb ul {
@@ -1841,7 +1842,7 @@ object {
 
 .product-order {
   border-top: 1px solid #000;
-  padding: 2em 0;
+  padding: 2em 0 4em 0;
   margin-top: 2em;
 }
 
