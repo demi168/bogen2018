@@ -4,15 +4,26 @@
 
 #policy {
 	h2 {
-		margin-bottom: 1em;
+		margin: 3em 0 1em 0 !important;
 		font-weight: bold;
 		@include font-size(1.36);
 	}
 	h3 {
+		font-weight: bold;
 		margin-bottom: .5em;
 	}
 	p {
 		margin-bottom: 1em;
+	}
+	dt {
+		font-weight: bold;
+		margin: 1em 0 .5em 0 !important;
+	}
+	dd {
+		margin: 0 0 .5em 1em !important;
+	}
+	img {
+		margin: 1em 0;
 	}
 }
 

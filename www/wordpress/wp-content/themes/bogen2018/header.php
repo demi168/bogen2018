@@ -17,12 +17,12 @@
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.backstretch.min.js"></script>
 	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124409746-1"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
-	  gtag('config', 'UA-3699864-20');
+	  gtag('config', 'UA-124409746-1');
 	</script>
 </head>
 <body <?php body_class(); ?>>
