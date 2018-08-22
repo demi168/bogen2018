@@ -172,7 +172,7 @@ function catch_that_image() {
 
 	if(empty($first_img)){
 	    // 記事内で画像がなかったときのためのデフォルト画像を指定
-	    $first_img = "/wordpress/wp-content/themes/bogen2018/images/default.jpg";
+	    $first_img = "/wp-content/themes/bogen2018/images/default.jpg";
 	}
 	return $first_img;
 }
@@ -223,7 +223,7 @@ function my_meta_ogp() {
        $ps_thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
        $ogp_img = $ps_thumb[0];
     } else {
-     $ogp_img = '/wordpress/wp-content/themes/bogen2018/images/ogp.png';
+     $ogp_img = 'http://bogen.jp/wp-content/themes/bogen2018/images/ogp.png';
     }
 
     //出力するOGPタグをまとめる
