@@ -53,6 +53,12 @@
 	}
 }
 
+.sort,
+.pager {
+	text-align: left;
+	@include font-size(0.72);
+	margin-bottom: 1em;
+}
 
 .product-image {
   margin-bottom: 2em;
