@@ -5,7 +5,6 @@
 			if ( 'post' === get_post_type() ) :
 		?>
 		<?php endif; ?>
-
 		<!-- カスタムフィールド：English_Title があれば表示 -->
 		<?php $customfield = get_post_meta($post->ID, 'English_Title', true); ?>
 		<?php if( empty($customfield) ): ?>
@@ -46,10 +45,12 @@
 	<?php $customfield = get_post_meta($post->ID, 'English', true); ?>
 	<?php if( empty($customfield) ): ?>
 		<?php else: ?>
-		<div class="post__content">
+		<div class="post__content post__content_english">
 			<?php echo post_custom('English'); ?>
 		</div>
 	<?php endif; ?>
+	<!-- プロフィール -->
+	<?php if ( function_exists( 'wpsabox_author_box' ) ) echo wpsabox_author_box(); ?>
 
 	<!-- カスタムフィールド：商品リンクがあれば表示 -->
 	<?php $customfield = get_post_meta($post->ID, '商品リンク', true); ?>

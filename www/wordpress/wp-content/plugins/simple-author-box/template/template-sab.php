@@ -40,6 +40,7 @@ if ( get_the_author_meta( 'description' ) != '' || '0' == $sabox_options['sab_no
 	}
 
 	echo '</div>';
+	echo '<div class="saboxplugin-profile">';
 
 	// author box name
 	echo '<div class="saboxplugin-authorname">';
@@ -59,7 +60,7 @@ if ( get_the_author_meta( 'description' ) != '' || '0' == $sabox_options['sab_no
 	echo wp_kses_post( $description );
 	echo '</div>';
 	echo '</div>';
-
+	echo '</div>';
 	if ( is_single() ) {
 		if ( get_the_author_meta( 'user_url' ) != '' && '1' == $sabox_options['sab_web'] ) { // author website on single
 			echo '<div class="saboxplugin-web ' . esc_attr( $sab_web_align ) . '">';
@@ -97,7 +98,7 @@ if ( get_the_author_meta( 'description' ) != '' || '0' == $sabox_options['sab_no
 
 	if ( '0' == $sabox_options['sab_hide_socials'] && $show_social_icons && ! empty( $social_links ) ) { // hide social icons div option
 		echo '<div class="saboxplugin-socials ' . esc_attr( $sabox_color ) . '">';
-		
+
 		foreach ( $social_links as $social_platform => $social_link ) {
 
 			if ( 'user_email' == $social_platform ) {

@@ -1487,6 +1487,17 @@ a.link__black {
   }
 }
 
+.post__content_english {
+  font-size: 12.48px;
+  font-size: 0.78rem;
+  letter-spacing: .05em;
+  word-break: keep-all;
+  line-height: 2;
+  font-family: "Montserrat", sans-serif;
+  color: #888;
+  padding-top: 2em;
+}
+
 .post__content_side {
   width: 22.15%;
   -webkit-box-flex: 1;
@@ -1548,9 +1559,17 @@ a.link__black {
 /* 署名表示 Simple Author Box override */
 .saboxplugin-wrap {
   border: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-top: 3em !important;
   padding-top: 1em !important;
   border-top: 2px solid #000;
+}
+
+.saboxplugin-wrap .sab-edit-settings {
+  display: none;
 }
 
 .saboxplugin-gravatar {
@@ -1560,17 +1579,19 @@ a.link__black {
 .saboxplugin-gravatar img {
   max-width: 82px !important;
   max-height: 82px !important;
+  border-radius: 50%;
 }
 
 .saboxplugin-authorname {
   margin: 1em 0 0 0;
-  font-size: 25.92px;
-  font-size: 1.62rem;
+  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .saboxplugin-authorname a {
   color: #000 !important;
+  text-decoration: none;
 }
 
 .saboxplugin-authorname a:hover {
@@ -1580,6 +1601,8 @@ a.link__black {
 .saboxplugin-desc {
   margin: .5em 0 !important;
   line-height: 1.62;
+  font-size: 14.08px;
+  font-size: 0.88rem;
 }
 
 /*--------------------------------------------------------------
