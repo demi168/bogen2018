@@ -23,18 +23,7 @@
 		</p>
 	</header>
 
-	<?php $customfield = get_post_meta($post->ID, 'English', true); ?>
-	<?php if( empty($customfield) ): ?>
-		<div class="post__content">
-		<?php else: ?>
-		<!-- カスタムフィールド：English があれば表示 -->
-		<div class="post__content_flex">
-			<div class="post__content_side">
-				<?php echo post_custom('English'); ?>
-			</div>
-			<div class="post__content_main">
-	<?php endif; ?>
-
+	<div class="post__content">
 	<?php
 		the_content( sprintf(
 			wp_kses(
@@ -52,6 +41,15 @@
 			'after'  => '</div>',
 		) );
 	?>
+
+	<!-- カスタムフィールド：English があれば表示 -->
+	<?php $customfield = get_post_meta($post->ID, 'English', true); ?>
+	<?php if( empty($customfield) ): ?>
+		<?php else: ?>
+		<div class="post__content">
+			<?php echo post_custom('English'); ?>
+		</div>
+	<?php endif; ?>
 
 	<!-- カスタムフィールド：商品リンクがあれば表示 -->
 	<?php $customfield = get_post_meta($post->ID, '商品リンク', true); ?>

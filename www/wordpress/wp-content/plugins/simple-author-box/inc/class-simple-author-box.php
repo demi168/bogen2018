@@ -13,11 +13,10 @@ class Simple_Author_Box {
 	 */
 	function __construct() {
 
-		$this->options = get_option( 'saboxplugin_options', array() );
-
 		$this->load_dependencies();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
+
+		add_action( 'init', array( $this, 'define_public_hooks' ) );
 
 	}
 
@@ -36,6 +35,7 @@ class Simple_Author_Box {
 
 	private function load_dependencies() {
 
+		require_once SIMPLE_AUTHOR_BOX_PATH . 'inc/class-simple-author-box-social.php';
 		require_once SIMPLE_AUTHOR_BOX_PATH . 'inc/class-simple-author-box-helper.php';
 		require_once SIMPLE_AUTHOR_BOX_PATH . 'inc/functions.php';
 
@@ -43,6 +43,7 @@ class Simple_Author_Box {
 		if ( is_admin() ) {
 			require_once SIMPLE_AUTHOR_BOX_PATH . 'inc/class-simple-author-box-admin-page.php';
 			require_once SIMPLE_AUTHOR_BOX_PATH . 'inc/class-simple-author-box-user-profile.php';
+			require_once SIMPLE_AUTHOR_BOX_PATH . 'inc/class-simple-author-box-previewer.php';
 		}
 	}
 
@@ -63,10 +64,19 @@ class Simple_Author_Box {
 		 * Only load when we're in the admin panel
 		 */
 		if ( is_admin() ) {
+			add_action( 'init', array( $this, 'initialize_admin' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_style_and_scripts' ) );
 			add_filter( 'user_contactmethods', array( $this, 'add_extra_fields' ) );
 			add_filter( 'plugin_action_links_' . SIMPLE_AUTHOR_BOX_SLUG, array( $this, 'settings_link' ) );
 		}
+	}
+
+	public function initialize_admin() {
+		// Class that handles admin page
+		new Simple_Author_Box_Admin_Page();
+
+		// Class that handles author box previewer
+		new Simple_Author_Box_Previewer();
 	}
 
 
@@ -83,7 +93,7 @@ class Simple_Author_Box {
 	 * @param [type] $args
 	 * @return void
 	 */
-	public function replace_gravatar_image( $avatar, $id_or_email, $size, $default, $alt, $args ) {
+	public function replace_gravatar_image( $avatar, $id_or_email, $size, $default, $alt, $args = array() ) {
 
 		// Process the user identifier.
 		$user = false;
@@ -125,16 +135,16 @@ class Simple_Author_Box {
 			}
 		}
 
+		$class[] = 'sab-custom-avatar';
+
 		if ( '' !== $custom_profile_image && true !== $args['force_default'] ) {
 
 			$avatar = sprintf(
-				"<img alt='%s' src='%s' srcset='%s' class='%s' height='%d' width='%d' %s/>",
+				"<img alt='%s' src='%s' srcset='%s' class='%s' %s/>",
 				esc_attr( $args['alt'] ),
 				esc_url( $custom_profile_image ),
 				esc_url( $custom_profile_image ) . ' 2x',
 				esc_attr( join( ' ', $class ) ),
-				(int) $args['height'],
-				(int) $args['width'],
 				$args['extra_attr']
 			);
 		}
@@ -142,17 +152,20 @@ class Simple_Author_Box {
 		return $avatar;
 	}
 
-	private function define_public_hooks() {
+	public function define_public_hooks() {
+
+		$this->options = Simple_Author_Box_Helper::get_option( 'saboxplugin_options' );
+		$this->options['sab_footer_inline_style'] = Simple_Author_Box_Helper::get_option( 'sab_footer_inline_style' );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'saboxplugin_author_box_style' ), 10 );
 		add_shortcode( 'simple-author-box', array( $this, 'shortcode' ) );
 		add_filter( 'sabox_hide_social_icons', array( $this, 'show_social_media_icons' ), 10, 2 );
 
-		if ( ! isset( $this->options['sab_autoinsert'] ) ) {
+		if ( '0' == $this->options['sab_autoinsert'] ) {
 			add_filter( 'the_content', 'wpsabox_author_box' );
 		}
 
-		if ( isset( $this->options['sab_footer_inline_style'] ) ) {
+		if ( '0' == $this->options['sab_footer_inline_style'] ) {
 			add_action(
 				'wp_footer', array(
 					$this,
@@ -243,7 +256,7 @@ class Simple_Author_Box {
 		}
 
 		$sab_protocol   = is_ssl() ? 'https' : 'http';
-		$sab_box_subset = get_option( 'sab_box_subset' );
+		$sab_box_subset = Simple_Author_Box_Helper::get_option( 'sab_box_subset' );
 
 		/**
 		 * Check for duplicate font families, remove duplicates & re-work the font enqueue procedure
@@ -256,9 +269,9 @@ class Simple_Author_Box {
 			$sab_subset = '&amp;subset=latin';
 		}
 
-		$sab_author_font = get_option( 'sab_box_name_font', 'None' );
-		$sab_desc_font   = get_option( 'sab_box_desc_font', 'None' );
-		$sab_web_font    = get_option( 'sab_box_web_font', 'None' );
+		$sab_author_font = Simple_Author_Box_Helper::get_option( 'sab_box_name_font' );
+		$sab_desc_font   = Simple_Author_Box_Helper::get_option( 'sab_box_desc_font' );
+		$sab_web_font    = Simple_Author_Box_Helper::get_option( 'sab_box_web_font' );
 
 		$google_fonts = array();
 
@@ -270,7 +283,7 @@ class Simple_Author_Box {
 			$google_fonts[] = str_replace( ' ', '+', esc_attr( $sab_desc_font ) );
 		}
 
-		if ( isset( $this->options['sab_web'] ) && $sab_web_font && 'none' != strtolower( $sab_web_font ) ) {
+		if ( '1' == $this->options['sab_web'] && $sab_web_font && 'none' != strtolower( $sab_web_font ) ) {
 			$google_fonts[] = str_replace( ' ', '+', esc_attr( $sab_web_font ) );
 		}
 
@@ -292,12 +305,6 @@ class Simple_Author_Box {
 		 * end changes introduced in 2.0.4
 		 */
 
-		if ( ! isset( $this->options['sab_load_fa'] ) ) {
-			wp_register_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-		}
-
-		wp_register_style( 'sab-plugin', SIMPLE_AUTHOR_BOX_ASSETS . 'css/simple-author-box' . $suffix . '.css', false, SIMPLE_AUTHOR_BOX_VERSION );
-
 		if ( ! is_single() and ! is_page() and ! is_author() and ! is_archive() ) {
 			return;
 		}
@@ -305,12 +312,6 @@ class Simple_Author_Box {
 		if ( ! empty( $google_fonts ) ) {
 			wp_enqueue_style( 'sab-font' );
 		}
-
-		if ( ! isset( $this->options['sab_load_fa'] ) ) {
-			wp_enqueue_style( 'font-awesome' );
-		}
-
-		wp_enqueue_style( 'sab-plugin' );
 
 	}
 
@@ -338,7 +339,7 @@ class Simple_Author_Box {
 		if ( '' != $atts['ids'] ) {
 			$ids = explode( ',', $atts['ids'] );
 			ob_start();
-			$sabox_options = get_option( 'saboxplugin_options' );
+			$sabox_options = Simple_Author_Box_Helper::get_option( 'saboxplugin_options' );
 			foreach ( $ids as $user_id ) {
 
 				$template        = Simple_Author_Box_Helper::get_template();
@@ -376,6 +377,13 @@ class Simple_Author_Box {
 
 	function sab_amp_css( $data ) {
 
+		$options = Simple_Author_Box_Helper::get_option( 'saboxplugin_options' );
+
+		$icon_size = absint( Simple_Author_Box_Helper::get_option( 'sab_box_icon_size' ) );
+		if ( '1' == $options['sab_colored'] ) {
+			$icon_size = $icon_size * 2;
+		}
+
 		$data['post_amp_styles'] = array(
 			'.saboxplugin-wrap .saboxplugin-gravatar'     => array(
 				'float: left',
@@ -403,8 +411,8 @@ class Simple_Author_Box {
 			),
 			'.saboxplugin-wrap .saboxplugin-desc p'       => array(
 				'margin: 5px 0 12px 0',
-				'font-size: ' . absint( get_option( 'sab_box_desc_size', 14 ) ) . 'px',
-				'line-height: ' . absint( get_option( 'sab_box_desc_size', 14 ) + 7 ) . 'px',
+				'font-size: ' . absint( Simple_Author_Box_Helper::get_option( 'sab_box_desc_size' ) ) . 'px',
+				'line-height: ' . absint( Simple_Author_Box_Helper::get_option( 'sab_box_desc_size' ) + 7 ) . 'px',
 			),
 			'.saboxplugin-wrap .saboxplugin-web'          => array(
 				'margin: 0 20px 15px',
@@ -415,9 +423,7 @@ class Simple_Author_Box {
 				'display: block',
 				'background: #fcfcfc',
 				'padding: 5px',
-				'box-shadow: 0 1px 0 0 #eee inset',
-				'-webkit-box-shadow: 0 1px 0 0 #eee inset',
-				'-moz-box-shadow: 0 1px 0 0 #eee inset',
+				'border-top: 1px solid #eee;',
 			),
 			'.saboxplugin-wrap .saboxplugin-socials a'    => array(
 				'text-decoration: none',
@@ -429,6 +435,7 @@ class Simple_Author_Box {
 				'-webkit-transition: opacity 0.4s',
 				'-moz-transition: opacity 0.4s',
 				'-o-transition: opacity 0.4s',
+				'display: inline-block',
 			),
 			'.saboxplugin-wrap .saboxplugin-socials .saboxplugin-icon-grey' => array(
 				'display: inline-block',
@@ -436,45 +443,31 @@ class Simple_Author_Box {
 				'margin: 10px 5px',
 				'color: #444',
 			),
-			'.saboxplugin-wrap .saboxplugin-socials .saboxplugin-icon-color.fa:before' => array(
-				'font-size: ' . get_option( 'sab_box_icon_size', 14 ) . 'px',
-			),
-			'.saboxplugin-wrap .saboxplugin-socials .saboxplugin-icon-color.fa' => array(
-				'width: ' . absint( get_option( 'sab_box_icon_size', 14 ) ) * 2 . 'px',
-				'height: ' . absint( get_option( 'sab_box_icon_size', 14 ) ) * 2 . 'px',
-				'line-height: ' . absint( get_option( 'sab_box_icon_size', 14 ) ) * 2 . 'px',
+			'.saboxplugin-wrap .saboxplugin-socials a svg' => array(
+				'width:' . absint( $icon_size ) . 'px;',
+				'height:' . absint( $icon_size ) . 'px',
+				'display:block'
 			),
 			'.saboxplugin-wrap .saboxplugin-socials.sabox-colored .saboxplugin-icon-color' => array(
 				'color: #FFF',
-				'background-color: grey',
 				'margin: 5px',
-				'text-align: center',
 				'vertical-align: middle',
+				'display: inline-block',
 			),
-			// hotfixes for some icons since we changed from sabox-icon to using fa-
-			'.saboxplugin-socials .fa-googleplus:before'  => array(
-				"content: '\\f0d5' ",
+			'.saboxplugin-wrap .clearfix' => array(
+				'clear:both;',
 			),
-			'.saboxplugin-socials .fa-sharethis:before'   => array(
-				"content: '\\f1e0' ",
+			'.saboxplugin-wrap .saboxplugin-socials a svg .st2' => array(
+				'fill: #fff;'
 			),
-			'.saboxplugin-socials .fa-stackoverflow:before' => array(
-				"content: '\\f16c' ",
-			),
-			'.saboxplugin-socials .fa-stumbleUpon:before' => array(
-				"content: '\\f1a4' ",
-			),
-			'.saboxplugin-socials .fa-user_email:before'  => array(
-				"content: '\\f0e0' ",
-			),
-			'.saboxplugin-socials .fa-addthis:before'     => array(
-				"content: '\\f0fe' ",
+			'.saboxplugin-wrap .saboxplugin-socials a svg .st1' => array(
+				'fill: rgba( 0, 0, 0, .3 );'
 			),
 			// custom paddings & margins
-			'.saboxplugin-wrap'                           => array(
-				'margin-top: ' . absint( get_option( 'sab_box_margin_top', 0 ) ) . 'px',
-				'margin-bottom: ' . absint( get_option( 'sab_box_margin_bottom', 0 ) ) . 'px',
-				'padding: ' . absint( get_option( 'sab_box_padding_top_bottom', 0 ) ) . 'px ' . absint( get_option( 'sab_box_padding_left_right', 0 ) ) . 'px',
+			'.saboxplugin-wrap' => array(
+				'margin-top: ' . absint( Simple_Author_Box_Helper::get_option( 'sab_box_margin_top' ) ) . 'px',
+				'margin-bottom: ' . absint( Simple_Author_Box_Helper::get_option( 'sab_box_margin_bottom' ) ) . 'px',
+				'padding: ' . absint( Simple_Author_Box_Helper::get_option( 'sab_box_padding_top_bottom' ) ) . 'px ' . absint( Simple_Author_Box_Helper::get_option( 'sab_box_padding_left_right' ) ) . 'px',
 				'box-sizing: border-box',
 				'border: 1px solid #EEE',
 				'width: 100%',
@@ -483,12 +476,19 @@ class Simple_Author_Box {
 				'word-wrap: break-word',
 				'position: relative',
 			),
+			'.sab-edit-settings' => array(
+				'display: none;',
+			),
+			'.sab-profile-edit' => array(
+				'display: none;',
+			),
 		);
 
-		$data['font_urls'] = array(
-			'Font Awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2',
-			'Font Awesome' => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-		);
+		if ( '1' == $options['sab_colored'] && '1' != $options['sab_box_long_shadow'] ) {
+			$data['post_amp_styles']['.saboxplugin-wrap .saboxplugin-socials .saboxplugin-icon-color .st1'] = array(
+				'display: none;',
+			);
+		}
 
 		return $data;
 	}
