@@ -21,6 +21,9 @@
 		section {
 			&.section {
 				margin-bottom: 4em;
+				@include if-phone {
+					margin-bottom: 2em;
+				}
 				.section__caption {
 					font-family: $font__caption;
 					@include font-size(1.36);
@@ -188,7 +191,7 @@
 			margin-bottom: 1em;
 		}
 		img {
-			margin-bottom: 2em;
+			margin-bottom: 1em;
 		}
 		&_flex {
 			display: flex;
@@ -233,6 +236,10 @@
 			}
 		}
 	}
+}
+.wp-caption-text {
+	@include font-size(0.80);
+	color: $color__link;
 }
 
 

@@ -16,8 +16,16 @@
 </div><!-- .site -->
 
 <script>
+  // Duration is the amount of time in between slides,
+  // and fade is value that determines how quickly the next image will fade in
 	$(function(){
-		$("#index__main_image").backstretch("<?php echo get_template_directory_uri(); ?>/images/index/01.jpg");
+		$("#index__main_image").backstretch([
+      "<?php echo get_template_directory_uri(); ?>/images/index/01.jpg",
+			"<?php echo get_template_directory_uri(); ?>/images/index/02.jpg",
+			"<?php echo get_template_directory_uri(); ?>/images/index/03.jpg",
+			"<?php echo get_template_directory_uri(); ?>/images/index/04.jpg",
+			"<?php echo get_template_directory_uri(); ?>/images/index/05.jpg"
+  	], {duration: 3000, fade: 750});
 	});
 </script>
 

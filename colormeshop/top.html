@@ -1,6 +1,6 @@
-<{if $recommend_num != 0 || $seller_num != 0}>
+<{if $productlist_num != 0}>
   <div class="article__list content__contents">
-    <{section name=num loop=$recommend}>
+    <{section name=num loop=$productlist}>
     <article class="article__list_unit">
       <div class="article__list_unit_thumb">
         <a href="<{$recommend[num].link_url}>" class="prd_lst_link">
@@ -31,37 +31,9 @@
       </header>
     </article>
     <{/section}>
-
-    <{section name=num loop=$seller}>
-    <article class="article__list_unit">
-      <div class="article__list_unit_thumb">
-        <a href="<{$seller[num].link_url}>" class="prd_lst_link">
-          <{if $seller[num].img_url != ""}>
-            <img src="<{$seller[num].img_url}>" class="prd-lst-img" alt="<{$seller[num].name}>" />
-          <{else}>
-            <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="prd-lst-img" alt="<{$seller[num].name}>" />
-          <{/if}>
-        </a>
-      </div>
-      <header>
-        <h1 class="article__list_unit_title">
-          <a href="<{$seller[num].link_url}>"><{$seller[num].name}></a>
-        </h1>
-        <p class="article__list_unit_info">
-          <{if $seller[num].soldout_flg == false}>
-            <{if $members_login_flg == true && $seller[num].discount_flg == true}>
-              <span><{$seller[num].regular_price}></span>
-            <{/if}>
-            <span><{$seller[num].price}></span>
-            <{if $members_login_flg == true && $seller[num].discount_flg == true}>
-              <span class="discount"><{$seller[num].discount_rate}>OFF!!</span>
-            <{/if}>
-          <{else}>
-            <span class="soldout">SOLD OUT</span>
-          <{/if}>
-        </p>
-      </header>
-    </article>
-    <{/section}>
   </div>
+<{else}>
+<div class="article__list content__contents">
+  <p>BOGEN SHOPは、現在準備中です。</p>
+</div>
 <{/if}>

@@ -1,4 +1,12 @@
-<link rel='stylesheet'  href='http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018/style.css' type='text/css' media='all' />
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124419909-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-124419909-1');
+</script>
+<link rel='stylesheet'  href='http://bogen.jp/wp-content/themes/bogen2018/style.css' type='text/css' media='all' />
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
@@ -9,7 +17,7 @@
         <!-- Side Navigation -->
         <div class="nav__main">
           <div class="nav__main_logo">
-            <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/"><img src="http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018/images/logo_mark.png" alt="BOGEN"></a>
+            <a href="http://bogen.jp/"><img src="http://bogen.jp/wp-content/themes/bogen2018/images/logo_mark.png" alt="BOGEN"></a>
           </div>
           <!-- カートボタン -->
           <div class="view-cart">
@@ -24,11 +32,12 @@
           </a>
           <nav class="nav__wrap">
             <div class="nav__wrap_logo">
-              <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/"><img src="http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018/images/logo_mark.png" alt="BOGEN"></a>
+              <a href="http://bogen.jp/"><img src="http://bogen.jp/wp-content/themes/bogen2018/images/logo_mark.png" alt="BOGEN"></a>
             </div>
             <div class="menu-menu-1-container">
               <ul id="menu-menu-1" class="menu">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1885">
+<<<<<<< HEAD
                   <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/about/">ABOUT</a>
                 </li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -100,18 +109,42 @@
                 </li>
                 <li class="menu-item menu-item-type-post_type menu-item-object-page">
                   <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/stockist/">STOCKIST</a>
+=======
+                  <a href="http://bogen.jp/about/">ABOUT</a>
+                </li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item menu-item-has-children">
+                  <a href="<{$home_url}>">SHOP</a>
+                  <ul class="sub-menu">
+                    <{section name=num loop=$category}>
+                      <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                        <a href="<{$category[num].link_url}>">
+                          <{$category[num].name}>
+                        </a>
+                      </li>
+                    <{/section}>
+                  </ul>
+                </li>
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                  <a href="http://bogen.jp/category/products/">PRODUCTS</a>
+                </li>
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                  <a href="http://bogen.jp/category/blog/">BLOG</a>
+                </li>
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                  <a href="http://bogen.jp/category/b-side/">B-SIDE</a>
+>>>>>>> 279102aa1fd419e28669f7a71c18ec0e3d851490
                 </li>
               </ul>
             </div>
             <div class="nav__main_link">
               <span>
-                <a href="https://www.facebook.com/BOGEN-100109856823061/"><img src="http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018/images/icon_facebook.png" alt="follow on Facebook"></a>
+                <a href="https://www.facebook.com/BOGEN-100109856823061/"><img src="http://bogen.jp/wp-content/themes/bogen2018/images/icon_facebook.png" alt="follow on Facebook"></a>
               </span>
               <span>
-                <a href="https://twitter.com/bogenskier"><img src="http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018/images/icon_twitter.png" alt="follow on Twitter"></a>
+                <a href="https://twitter.com/bogenskier"><img src="http://bogen.jp/wp-content/themes/bogen2018/images/icon_twitter.png" alt="follow on Twitter"></a>
               </span>
               <span>
-                <a href="https://www.instagram.com/skishopbogen/"><img src="http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018/images/icon_instagram.png" alt="follow on Instagram"></a>
+                <a href="https://www.instagram.com/skishopbogen/"><img src="http://bogen.jp/wp-content/themes/bogen2018/images/icon_instagram.png" alt="follow on Instagram"></a>
               </span>
             </div>
           </nav>
@@ -135,7 +168,7 @@
 
     <footer class="site-footer">
       <p class="site-footer__logo">
-        <a href="http://8774e97a9ad23649.lolipop.jp/wordpress/"><img src="http://8774e97a9ad23649.lolipop.jp/wordpress/wp-content/themes/bogen2018/images/logo_type.png" alt="BOGEN"></a>
+        <a href="http://bogen.jp/"><img src="http://bogen.jp/wp-content/themes/bogen2018/images/logo_type.png" alt="BOGEN"></a>
       </p>
       <p class="site-footer__info">
         <a href="<{$sk_url}>#info">特定商取引法に基づく表記</a>
@@ -145,8 +178,6 @@
         <a href="<{$sk_url}>#payment">お支払い方法について</a>
         <span class="sep"> | </span>
         <a href="<{$sk_url}>">配送方法・送料について</a>
-        <span class="sep"> | </span>
-        <a href="mailto:otoiawase@bogen.jp">お問い合わせ</a>
       </p>
       <p class="site-footer__info">
         <a href="<{$view_myaccount_url}>"><i class="icon-b icon-user"></i><span>マイアカウント</span></a>
@@ -162,6 +193,8 @@
               <a href="<{$members_login_url}>"><i class="icon-b icon-logout"></i><span>ログアウト</span></a>
           <{/if}>
         <{/if}>
+        <span class="sep"> | </span>
+        <a href="mailto:otoiawase@bogen.jp">お問い合わせ</a>
       </p>
       <p class="site-footer__info">
         Copyright &copy; Emo inc.

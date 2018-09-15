@@ -627,14 +627,6 @@ li > ol {
   margin-left: 1.5em;
 }
 
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin: 0 1.5em 1.5em;
-}
-
 img {
   height: auto;
   /* Make sure images are scaled correctly. */
@@ -1246,6 +1238,12 @@ a.link__black {
   margin-bottom: 4em;
 }
 
+@media screen and (max-width: 768px) {
+  .content__container section.section {
+    margin-bottom: 2em;
+  }
+}
+
 .content__container section.section .section__caption {
   font-family: "Montserrat", sans-serif;
   font-size: 21.76px;
@@ -1469,7 +1467,7 @@ a.link__black {
 }
 
 .post__content img {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .post__content_flex {
@@ -1539,6 +1537,12 @@ a.link__black {
 .post__content_shoplist h4 {
   margin-bottom: .5em;
   font-weight: bold;
+}
+
+.wp-caption-text {
+  font-size: 12.8px;
+  font-size: 0.8rem;
+  color: #888;
 }
 
 /* 署名表示 Simple Author Box override */
@@ -1711,18 +1715,32 @@ object {
 }
 
 #policy h2 {
-  margin-bottom: 1em;
+  margin: 3em 0 1em 0 !important;
   font-weight: bold;
   font-size: 21.76px;
   font-size: 1.36rem;
 }
 
 #policy h3 {
+  font-weight: bold;
   margin-bottom: .5em;
 }
 
 #policy p {
   margin-bottom: 1em;
+}
+
+#policy dt {
+  font-weight: bold;
+  margin: 1em 0 .5em 0 !important;
+}
+
+#policy dd {
+  margin: 0 0 .5em 1em !important;
+}
+
+#policy img {
+  margin: 1em 0;
 }
 
 .view-cart {
@@ -1758,6 +1776,14 @@ object {
   text-decoration: none;
 }
 
+.sort,
+.pager {
+  text-align: left;
+  font-size: 11.52px;
+  font-size: 0.72rem;
+  margin-bottom: 1em;
+}
+
 .product-image {
   margin-bottom: 2em;
 }
@@ -1770,6 +1796,7 @@ object {
 
 .product-image-main {
   margin-bottom: 2em;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -1779,7 +1806,7 @@ object {
 }
 
 .product-image-main img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .product-image-thumb ul {
@@ -1841,7 +1868,7 @@ object {
 
 .product-order {
   border-top: 1px solid #000;
-  padding: 2em 0;
+  padding: 2em 0 4em 0;
   margin-top: 2em;
 }
 
