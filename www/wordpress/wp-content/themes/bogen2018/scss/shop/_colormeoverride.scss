@@ -77,18 +77,23 @@
   }
   &-thumb {
 		ul {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-start;
-			flex-wrap: wrap;
 			margin: 0;
+			@include if-phone {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				flex-wrap: wrap;
+			}
 		}
 		li {
 	    cursor: pointer;
 			list-style: none;
 			height: auto;
 			padding-top: 15%;
-			margin: 0;
+			@include if-desktop {
+				float: left;
+				margin: 0 1em 1em 0;
+			}
 			position: relative;
 			@include column-width($numberColumns: 4);
 			@include if-phone {
@@ -142,10 +147,10 @@
 		  display: inline;
 		}
 		input {
-		  padding: 24px 18px;
-		  width: 128px;
+		  padding: 21px 18px;
+		  @include column-width($numberColumns: 6);
 		  text-align: right;
-		  @include font-size(1.36);
+		  @include font-size(1.2);
 		  line-height: 1;
 		}
 	}
@@ -169,7 +174,7 @@
   }
 	&-unit {
 		margin-bottom: 1em;
-		width: 50%;
+		@include column-width($numberColumns: 3);
 		@include if-phone {
 			width: 100%;
 		}
