@@ -241,4 +241,24 @@ function my_meta_ogp() {
   }
 } //END my_meta_ogp
 
-add_action('wp_head','my_meta_ogp');//headにOGPを出力
+add_action('wp_head','my_meta_ogp'); //headにOGPを出力
+
+// ループ回数を取得
+function get_loop_number(){
+	global $wp_query;
+	return $wp_query->current_post + 1;
+}
+
+// 現在の記事は何記事目かを取得
+function get_post_number( $post_type = 'post', $op = '<=' ) {
+    global $wpdb, $post;
+    $post_type = is_array($post_type) ? implode("','", $post_type) : $post_type;
+    $number = $wpdb->get_var("
+        SELECT COUNT( * )
+        FROM $wpdb->posts
+        WHERE post_date {$op} '{$post->post_date}'
+        AND post_status = 'publish'
+        AND post_type = ('{$post_type}')
+    ");
+    return $number;
+}

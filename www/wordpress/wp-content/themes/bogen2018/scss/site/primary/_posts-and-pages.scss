@@ -115,7 +115,7 @@
 					@include column-width($numberColumns: 1);
 				}
 			}
-			&.column {
+			&.b-side {
 				@include column-width($numberColumns: 2);
 				@include if-phone {
 					@include column-width($numberColumns: 1);
