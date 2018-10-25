@@ -195,22 +195,21 @@ add_filter( 'get_the_archive_title', function ($title) {
 /**
 * OGPタグ出力ファンクション
 */
-function my_meta_ogp()
-{
-if (is_front_page() || is_home() || is_singular()) {
+function my_meta_ogp() {
+	if (is_front_page() || is_home() || is_singular()) {
 
 /**
 * ############ 初期設定 ここから ######################
 */
 
 // 画像 （アイキャッチ画像が無い時に使用する画像URL）
-$ogp_image = 'http://bogen.jp/wp-content/themes/bogen2018/images/ogp.png';
-// Twitterのアカウント名 (@xxx)
-$twitter_site = '@bogenskier';
-// Twitterカードの種類（summary_large_image または summary を指定）
-$twitter_card = 'summary_large_image';
-// Facebook APP ID
-$facebook_app_id = '';
+	$ogp_image = 'http://bogen.jp/wp-content/themes/bogen2018/images/ogp.png';
+	// Twitterのアカウント名 (@xxx)
+	$twitter_site = '@bogenskier';
+	// Twitterカードの種類（summary_large_image または summary を指定）
+	$twitter_card = 'summary_large_image';
+	// Facebook APP ID
+	$facebook_app_id = '';
 
 /**
 * ############ 初期設定 ここまで ######################
@@ -221,18 +220,19 @@ $ogp_title = '';
 $ogp_description = '';
 $ogp_url = '';
 $html = '';
+
 if (is_singular()) {
-// 記事＆固定ページ
-setup_postdata($post);
-$ogp_title = $post->post_title;
-$ogp_description = mb_substr(get_the_excerpt(), 0, 100);
-$ogp_url = get_permalink();
-wp_reset_postdata();
+	// 記事＆固定ページ
+	setup_postdata($post);
+	$ogp_title = $post->post_title;
+	$ogp_description = mb_substr(get_the_excerpt(), 0, 100);
+	$ogp_url = get_permalink();
+	wp_reset_postdata();
 } elseif (is_front_page() || is_home()) {
-// トップページ
-$ogp_title = get_bloginfo('name');
-$ogp_description = get_bloginfo('description');
-$ogp_url = home_url();
+	// トップページ
+	$ogp_title = get_bloginfo('name');
+	$ogp_description = get_bloginfo('description');
+	$ogp_url = home_url();
 }
 
 // og:type
@@ -240,8 +240,8 @@ $ogp_type = (is_front_page() || is_home()) ? 'website' : 'article';
 
 // og:image
 if (is_singular() && has_post_thumbnail()) {
-$ps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-$ogp_image = $ps_thumb[0];
+	$ps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+	$ogp_image = $ps_thumb[0];
 }
 
 // 出力するOGPタグをまとめる

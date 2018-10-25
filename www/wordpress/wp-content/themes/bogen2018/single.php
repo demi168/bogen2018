@@ -27,21 +27,17 @@
 						query_posts(
 							array(
 								'cat' => $cat_id,
-								'showposts' => 8,
+								'showposts' => 6,
 								'post__not_in' => array($post_id)
 							)
 						);
 						if(have_posts()) :
 					?>
 					<?php while (have_posts()) : the_post(); ?>
-					<article class="article__list_unit blog">
+					<article class="article__list_unit">
 						<div class="article__list_unit_thumb">
 							<a href="<?php the_permalink(); ?>">
-								<?php if (has_post_thumbnail()) : ?>
-									<?php the_post_thumbnail('thumbnail'); ?>
-								<?php else : ?>
-									<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
-								<?php endif ; ?>
+								<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
 							</a>
 						</div>
 						<header>
@@ -61,7 +57,7 @@
 					<?php endif; ?>
 					<?php wp_reset_query(); ?>
 				</div><!-- /.article__list -->
-				
+
 			</div>
 		</section>
 	</div><!-- /.content__container -->
