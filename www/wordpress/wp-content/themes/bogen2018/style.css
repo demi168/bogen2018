@@ -1335,7 +1335,7 @@ a.link__black {
 }
 
 .article__list_unit:nth-child(3n+2):last-child {
-  margin-right: 33.33%;
+  margin-right: 34.59667%;
 }
 
 .article__list_unit_thumb {
@@ -1361,7 +1361,7 @@ a.link__black {
 }
 
 .article__list_unit.blog {
-  width: 22.15%;
+  width: 30.79667%;
 }
 
 @media screen and (max-width: 768px) {
@@ -1464,6 +1464,7 @@ a.link__black {
 
 .post__content {
   line-height: 1.8;
+  margin-bottom: 5em;
 }
 
 .post__content p {
