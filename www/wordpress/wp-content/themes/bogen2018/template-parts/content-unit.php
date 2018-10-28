@@ -11,11 +11,7 @@
 <article class="article__list_unit">
 	<div class="article__list_unit_thumb">
 		<a href="<?php the_permalink(); ?>">
-			<?php if (has_post_thumbnail()) : ?>
-				<?php the_post_thumbnail('thumbnail'); ?>
-			<?php else : ?>
-				<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
-			<?php endif ; ?>
+			<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
 		</a>
 	</div>
 	<header>

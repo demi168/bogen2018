@@ -1,0 +1,99 @@
+<div class="content__contents">
+  <div class="content__breadcrumbs">
+    <!-- パンくずナビ -->
+    <a href="<{$home_url}>">TOP</a>
+    <{if $smarty.get.mode != 'grp'}>
+        <{if $bid_name != ""}><span>&gt;</span><a href='<{$bid_link}>'><{$bid_name}></a><{/if}>
+        <{if $sid_name != ""}><span>&gt;</span><a href='<{$sid_link}>'><{$sid_name}></a><{/if}>
+        <{if $product_name != ""}><span>&gt;</span><a href='<{$product_link}>'><{$product_name}></a><{/if}>
+    <{else}>
+        <{section name=num loop=$group_breadcrumb}>
+            <span>&gt;</span><a href="<{$group_breadcrumb[num].link_url}>"><{$group_breadcrumb[num].name}></a>
+        <{/section}>
+    <{/if}>
+  </div>
+  <!--// パンくずナビ -->
+
+<!-- 商品があるとき -->
+<{if $productlist_num != 0}>
+
+<!-- ソート -->
+<!-- <div class="sort">
+  <p>
+    並び順を変更 |
+    <{if $productlist_sort_now != ""}>
+      <a href="<{$productlist_sort_def}>">おすすめ順</a> :
+    <{else}>
+      <span style="font-weight: bolder;">おすすめ順</span> :
+    <{/if}>
+    <{if $productlist_sort_now != "p"}>
+      <a href="<{$productlist_sort_price}>">価格順</a> :
+    <{else}>
+      <span style="font-weight: bolder;">価格順</span> :
+    <{/if}>
+    <{if $productlist_sort_now != "n"}>
+      <a href="<{$productlist_sort_new}>">新着順</a>
+    <{else}>
+      <span style="font-weight: bolder;">新着順</span>
+    <{/if}>
+  </p>
+</div> -->
+<!-- // ソート -->
+
+<!-- 商品一覧 -->
+<div class="article__list">
+  <{section name=num loop=$productlist}>
+  <article class="article__list_unit">
+    <div class="article__list_unit_thumb">
+      <a href="<{$productlist[num].link_url}>" class="prd_lst_link">
+        <{if $productlist[num].img_url != ""}>
+          <img src="<{$productlist[num].img_url}>" class="prd-lst-img" alt="<{$productlist[num].name}>" />
+        <{else}>
+          <img src="http://img.shop-pro.jp/tmpl_img/69/prd_lst_noimage.png" class="prd-lst-img" alt="<{$productlist[num].name}>" />
+        <{/if}>
+      </a>
+    </div>
+    <header>
+      <h1 class="article__list_unit_title">
+        <a href="<{$productlist[num].link_url}>"><{$productlist[num].name}></a>
+      </h1>
+      <p class="article__list_unit_info">
+        <{if $productlist[num].soldout_flg == false}>
+          <{if $members_login_flg == true && $productlist[num].discount_flg == true}>
+            <span><{$productlist[num].regular_price}></span>
+          <{/if}>
+          <span><{$productlist[num].price}></span>
+          <{if $members_login_flg == true && $productlist[num].discount_flg == true}>
+            <span class="discount"><{$productlist[num].discount_rate}>OFF!!</span>
+          <{/if}>
+        <{else}>
+          <span class="soldout">SOLD OUT</span>
+        <{/if}>
+      </p>
+    </header>
+  </article>
+  <{/section}>
+</div>
+<!-- 商品一覧 -->
+
+<!-- 商品数・ページ送り -->
+<div class="pager">
+  <p>
+    <{if $productlist_prev_page != ""}>
+      <a href="<{$productlist_prev_page}>">前へ</a>
+    <{/if}>
+    全<{$productlist_num}>商品中、<{$productlist_snum}>-<{$productlist_enum}>商品を表示しています。
+    <{if $productlist_next_page != ""}>
+      <a href="<{$productlist_next_page}>">次へ</a>
+    <{/if}>
+  </p>
+</div>
+<!-- // 商品数・ページ送り -->
+
+<{else}>
+  <!-- 該当商品がないとき -->
+  <{if $subcategory_num == 0}>該当する商品がありません<{/if}>
+<{/if}>
+
+</div>
+<!-- /.content__container -->

@@ -85,6 +85,9 @@
 				@include column-width($numberColumns: 1);
 			}
 			margin-bottom: 2em;
+			&:nth-child(3n+2):last-child {
+				margin-right: map-get( $columns, 3 ) + $columns__margin/3;
+			}
 			&_thumb {
 				width: 100%;
 				height: auto;
@@ -104,7 +107,7 @@
 				}
 			}
 			&.blog {
-				@include column-width($numberColumns: 4);
+				@include column-width($numberColumns: 3);
 				@include if-phone {
 					@include column-width($numberColumns: 2);
 				}
@@ -187,6 +190,7 @@
 	}
 	&__content {
 		line-height: $font__line-height-body;
+		margin-bottom: 5em;
 		p {
 			margin-bottom: 1em;
 		}

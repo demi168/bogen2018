@@ -34,11 +34,7 @@
 			      <article class="article__list_unit blog">
 							<div class="article__list_unit_thumb">
 								<a href="<?php the_permalink(); ?>">
-									<?php if (has_post_thumbnail()) : ?>
-										<?php the_post_thumbnail('thumbnail'); ?>
-									<?php else : ?>
-										<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
-									<?php endif ; ?>
+									<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
 								</a>
 							</div>
 							<header>
@@ -78,11 +74,7 @@
 			      <article class="article__list_unit product">
 							<div  class="article__list_unit_thumb">
 								<a href="<?php the_permalink(); ?>">
-									<?php if (has_post_thumbnail()) : ?>
-										<?php the_post_thumbnail('thumbnail'); ?>
-									<?php else : ?>
-										<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
-									<?php endif ; ?>
+									<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
 								</a>
 							</div>
 							<header>
@@ -122,11 +114,7 @@
 						<article class="article__list_unit b-side">
 							<div  class="article__list_unit_thumb">
 								<a href="<?php the_permalink(); ?>">
-									<?php if (has_post_thumbnail()) : ?>
-										<?php the_post_thumbnail('thumbnail'); ?>
-									<?php else : ?>
-										<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
-									<?php endif ; ?>
+									<img src="<?php echo catch_that_image(); ?>" alt="<?php the_title(); ?>" />
 								</a>
 							</div>
 							<header>

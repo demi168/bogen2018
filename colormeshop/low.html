@@ -1,0 +1,116 @@
+<div class="content__contents">
+  <div id="delivery">
+    <h2 class="shopkeeper">配送・送料について</h2>
+    <dl class="def-lst">
+      <{section name=num loop=$sk_delivery}>
+        <dt class="def-lst-dt"><{$sk_delivery[num].name}></dt>
+        <dd class="def-lst-dd">
+          <{if $sk_delivery[num].img_url != "" }>
+            <img src="<{$sk_delivery[num].img_url}>" /><br />
+          <{/if}>
+          <{$sk_delivery[num].other}>&nbsp;
+        </dd>
+      <{/section}>
+    </dl>
+  </div>
+
+  <div id="payment">
+    <h2 class="shopkeeper">支払い方法について</h2>
+    <dl class="def-lst">
+      <{section name=num loop=$sk_payment}>
+        <dt class="def-lst-dt"><{$sk_payment[num].name}></dt>
+        <dd class="def-lst-dd">
+          <{if $sk_payment[num].img_url != "" }>
+            <img src="<{$sk_payment[num].img_url}>" /><br />
+          <{/if}>
+          <{if $sk_payment[num].card_img != "" }>
+            <{$sk_payment[num].card_img}><br />
+          <{/if}>
+          <{$sk_payment[num].other}>&nbsp;
+        </dd>
+      <{/section}>
+    </dl>
+  </div>
+
+  <div id="info">
+    <h2 class="shopkeeper">特定商取引法に基づく表記</h2>
+    <div class="row">
+      <dl class="def-lst">
+        <{if $shop.shop_name != ""}>
+          <dt class="def-lst-dt">販売業者</dt>
+          <dd class="def-lst-dd"><{$shop.shop_name}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.manager_name != ""}>
+          <dt class="def-lst-dt">運営統括責任者名</dt>
+          <dd class="def-lst-dd"><{$shop.manager_name}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.postal != ""}>
+          <dt class="def-lst-dt">郵便番号</dt>
+          <dd class="def-lst-dd"><{$shop.postal}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.address != ""}>
+          <dt class="def-lst-dt">住所</dt>
+          <dd class="def-lst-dd"><{$shop.address}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.price != ""}>
+          <dt class="def-lst-dt">商品代金以外の料金の説明</dt>
+          <dd class="def-lst-dd"><{$shop.price}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.apply_limit != ""}>
+          <dt class="def-lst-dt">申込有効期限</dt>
+          <dd class="def-lst-dd"><{$shop.apply_limit}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.bad_product != ""}>
+          <dt class="def-lst-dt">不良品</dt>
+          <dd class="def-lst-dd"><{$shop.bad_product}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.sales_num != ""}>
+          <dt class="def-lst-dt">販売数量</dt>
+          <dd class="def-lst-dd"><{$shop.sales_num}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.delivery_time != ""}>
+          <dt class="def-lst-dt">引渡し時期</dt>
+          <dd class="def-lst-dd"><{$shop.delivery_time}>&nbsp;</dd>
+        <{/if}>
+      </dl>
+      <dl class="def-lst">
+        <{if $shop.payment_way != ""}>
+          <dt class="def-lst-dt">お支払い方法</dt>
+          <dd class="def-lst-dd"><{$shop.payment_way}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.payment_limit != ""}>
+          <dt class="def-lst-dt">お支払い期限</dt>
+          <dd class="def-lst-dd"><{$shop.payment_limit}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.return_limit != ""}>
+          <dt class="def-lst-dt">返品期限</dt>
+          <dd class="def-lst-dd"><{$shop.return_limit}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.return_price != ""}>
+          <dt class="def-lst-dt">返品送料</dt>
+          <dd class="def-lst-dd"><{$shop.return_price}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.license != ""}>
+          <dt class="def-lst-dt">資格・免許</dt>
+          <dd class="def-lst-dd"><{$shop.license}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.service_name != ""}>
+          <dt class="def-lst-dt">サービス名</dt>
+          <dd class="def-lst-dd"><{$shop.service_name}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.tel != ""}>
+          <dt class="def-lst-dt">電話番号</dt>
+          <dd class="def-lst-dd"><{$shop.tel}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.email != ""}>
+          <dt class="def-lst-dt">公開メールアドレス</dt>
+          <dd class="def-lst-dd"><{$shop.email}>&nbsp;</dd>
+        <{/if}>
+        <{if $shop.hp_address != ""}>
+          <dt class="def-lst-dt">ホームページアドレス</dt>
+          <dd class="def-lst-dd"><{$shop.hp_address}>&nbsp;</dd>
+        <{/if}>
+      </dl>
+    </div>
+  </div>
+</div>
