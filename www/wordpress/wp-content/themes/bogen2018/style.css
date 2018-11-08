@@ -567,7 +567,7 @@ abbr, acronym {
 }
 
 mark, ins {
-  background: #fff9c0;
+  background: #ffc1ee;
   text-decoration: none;
 }
 
@@ -1230,6 +1230,10 @@ a.link__black {
   }
 }
 
+.content__contents article {
+  clear: both;
+}
+
 .content__container {
   margin: 0 4vw;
 }
@@ -1464,7 +1468,7 @@ a.link__black {
 
 .post__content {
   line-height: 1.8;
-  margin-bottom: 5em;
+  margin-bottom: 4em;
 }
 
 .post__content p {
@@ -1583,7 +1587,9 @@ a.link__black {
 
 .saboxplugin-gravatar img {
   max-width: 82px !important;
-  max-height: 82px !important;
+  height: 82px !important;
+  -o-object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
 }
 
