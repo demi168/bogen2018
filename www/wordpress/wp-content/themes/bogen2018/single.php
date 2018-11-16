@@ -57,9 +57,7 @@
 					<?php endif; ?>
 					<?php wp_reset_query(); ?>
 				</div><!-- /.article__list -->
-
 			</div>
 		</section>
 	</div><!-- /.content__container -->
-
 <?php get_footer(); ?>
