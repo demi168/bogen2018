@@ -61,6 +61,5 @@
 			購入する
 		</a>
 	<?php endif; ?>
-
 	</div><!-- .post__content -->
 </article>
