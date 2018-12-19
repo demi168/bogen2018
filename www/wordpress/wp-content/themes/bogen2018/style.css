@@ -1566,15 +1566,12 @@ a.link__black {
 }
 
 /* 署名表示 Simple Author Box override */
+/* 署名表示 Simple Author Box override */
 .saboxplugin-wrap {
-  border: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin-top: 3em !important;
   padding-top: 1em !important;
   border-top: 2px solid #000;
+  clear: both;
 }
 
 .saboxplugin-wrap .sab-edit-settings {
@@ -1582,15 +1579,7 @@ a.link__black {
 }
 
 .saboxplugin-gravatar {
-  padding: 1em 2em 1em 0 !important;
-}
-
-.saboxplugin-gravatar img {
-  max-width: 82px !important;
-  height: 82px !important;
-  -o-object-fit: cover;
-  object-fit: cover;
-  border-radius: 50%;
+  display: none;
 }
 
 .saboxplugin-authorname {
